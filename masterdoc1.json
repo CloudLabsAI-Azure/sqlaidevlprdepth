@@ -1,0 +1,21 @@
+[
+    {
+        "Name": "Day 01 : SQL AI Developer",
+        "Language": "English",
+        "BaseURL": "https://github.com/CloudLabsAI-Azure/sqlaidevlprdepth",
+        "Files": [
+             {
+                "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/gettingstarted.md",
+                "Order": 1
+             },
+             {
+                "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/Lab%201.md",
+                "Order": 2
+             },
+             {
+                "RawFilePath": "https://raw.githubusercontent.com/CloudLabsAI-Azure/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%202/Lab%202.md",
+                "Order": 3
+             }
+        ]
+    }
+]
