@@ -1,32 +1,32 @@
-# Day 02 : SQL with AI Developer
+# Day 02 : SQL AI Developer
 
 ### Overall Estimated Duration: 4 Hours
 
 ## Overview
  
-In this lab, you will design and implement an AI-powered medical search solution that enables intelligent, context-aware retrieval of healthcare information. Working with a realistic scenario at Contoso Medical College Hospital, you will build a Medical Research Assistant that allows users to ask natural language questions and receive clinically relevant, research-backed responses. Instead of relying solely on traditional keyword searches, the solution leverages SQL Server 2025 integrated with Azure OpenAI to generate and store vector embeddings directly within the database. This SQL-first semantic retrieval approach transforms the database into an AI-enabled healthcare data platform. By combining secure data storage, intelligent search, and AI capabilities, you will create a system that delivers accurate answers grounded strictly in verified medical research and patient case data.
+In this lab, you will design and build a secure, AI-powered database solution that enables intelligent search and modern API integration. Working across healthcare and retail scenarios, you will use SQL Server 2025, GitHub Copilot/SSMS Copilot, Azure OpenAI Service, and Data API Builder to develop semantic search and inventory management capabilities. You will integrate AI directly into the database to support natural language queries and automate development tasks. The lab also emphasizes enterprise-grade security through RBAC, data masking, and managed identity. Finally, you will expose your database as REST and GraphQL APIs, demonstrating how modern SQL development combines AI, security, and API-driven architecture.
 
 ## Objective
 
 By the end of this lab, participants will be able to:
 
-  - Building a Semantic Patient Case Search Engine for Healthcare Using SQL Server 2025
+  - Building and Securing a Safe Clinical Report Search API
 
-  - Developing a Knowledge-Augmented Medical Library Research Assistant with RAG and Azure SQL Database
+  - Building a Secure Inventory System with SQL Server 2025, GitHub Copilot, and Data APIs
 
 ## Pre-requisites
 
 Participants should have:
 
-- A working knowledge of Microsoft Azure services, including resource groups, virtual machines, Azure SQL, and Azure OpenAI.
+- A basic understanding of Microsoft Azure services, including Virtual Machines, Azure OpenAI, and identity management concepts.
 
-- Basic experience with SQL Server or Azure SQL Database, including writing T-SQL queries and managing databases using SSMS.
+- Working knowledge of SQL Server 2025, including creating databases, tables, stored procedures, and writing T-SQL queries.
 
-- Familiarity with AI concepts such as embeddings, vector search, and Retrieval-Augmented Generation (RAG).
+- Familiarity with database security concepts such as Role-Based Access Control (RBAC), logins, users, permissions, and Dynamic Data Masking.
 
-- Understanding of authentication methods, networking configuration, and secure access to Azure resources.
+- Basic understanding of AI concepts such as embeddings, vector search, and how AI integrates with databases.
 
-- General awareness of how AI services integrate with databases for intelligent search and chat-based applications.
+- Experience using development tools like SQL Server Management Studio (SSMS), Visual Studio Code, GitHub Copilot, and command-line tools.
 
 ## Architecture
 
@@ -42,36 +42,37 @@ Throughout the lab, you will investigate generated incidents, run hunting querie
 
 The architecture for this lab involves the following key components:
 
-1. **Azure SQL / SQL Server 2025:**
-The main data platform used to store patient cases and medical research data.  
-    - In Exercise 1 uses SQL Server 2025 on Azure VM with in-database AI features.  
-    - In Exercise 2 uses Azure SQL Database for structured research storage.  
-    - Supports secure storage, querying, and relational filtering.
+1. **SQL Server 2025:**  
+The core database platform used to store clinical reports and inventory data.  
+    - Supports AI features such as vector data types and semantic search.  
+    - Handles schema design, stored procedures, and enterprise-grade security controls.
 
-1. **Azure OpenAI Service:**
-Provides AI models for embeddings and chat.  
-    - Converts text into vector embeddings for semantic search.  
-    - Generates natural language responses based on retrieved content.
+2. **Azure OpenAI Service:**  
+Provides AI capabilities for generating embeddings.  
+    - Converts text into vector representations for semantic search.  
+    - Integrates securely with SQL Server using API keys or Managed Identity.
 
-1. **Vector Embeddings:**
-Text data is converted into numeric vectors.  
-    - Stored in SQL tables or indexed in Azure AI Search.  
-    - Enables similarity search using cosine distance.
+3. **Vector Search & Indexing**  
+Enables intelligent similarity-based search.  
+    - Embeddings are stored in vector columns.  
+    - DiskANN indexing improves performance for large datasets.  
+    - Supports both exact and approximate nearest neighbor (ANN) search.
 
-1. **Azure AI Search**
-Used for intelligent document retrieval.  
-    - Performs hybrid search (keyword + vector).  
-    - Returns relevant documents for grounded responses. 
+4. **Security Layer (RBAC & Data Masking):**  
+Protects sensitive business and patient data.  
+    - Role-Based Access Control restricts user permissions.  
+    - Dynamic Data Masking hides sensitive fields from unauthorized users.  
+    - Managed Identity secures service-to-service communication.
 
-1. **RAG (Retrieval-Augmented Generation):**
-Combines retrieval with AI response generation.  
-    - Retrieves trusted data first.  
-    - Ensures answers are based only on enterprise medical content.
+5. **GitHub Copilot / SSMS Copilot:** 
+Provides AI-assisted development.  
+    - Generates queries, stored procedures, and schema designs.  
+    - Improves productivity and reduces manual coding effort.
 
-1. **AI Logic Layer**
-Handles search and response control.  
-    - In Exercise 1 uses stored procedures for semantic case retrieval.  
-    - In Exercise 2 uses an AI agent with grounding policies.   
+6. **Data API Builder:**  
+Exposes database objects as secure REST and GraphQL APIs.  
+    - Allows applications to access SQL data through modern API endpoints.  
+    - Connects SQL databases with web and AI applications.
 
 ## Getting Started with Lab
 Once you're ready to dive in, your virtual machine and **Guide** will be right at your fingertips within your web browser.
