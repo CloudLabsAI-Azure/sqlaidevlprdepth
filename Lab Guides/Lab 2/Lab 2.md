@@ -315,7 +315,7 @@ By completing this lab, you will be able to:
 
 ## Exercise 5: Create Azure AI Search Service
 
-1.  Switch back to the Azure portal tab. Enter **AI search** in the
+1.  Switch back to the Azure portal tab. Enter +++AI search+++ in the
     search bar and select AI Search.
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%202/media/image58.png)
@@ -612,6 +612,7 @@ chat to create a complete end-to-end solution. Most importantly, you
 ensured that every response is grounded in verified medical research,
 demonstrating how AI can be used responsibly and effectively in
 real-world healthcare and research environments.
+
 
 
 
