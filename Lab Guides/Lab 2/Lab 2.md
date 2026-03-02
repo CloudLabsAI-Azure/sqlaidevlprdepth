@@ -78,6 +78,12 @@ By completing this lab, you will be able to:
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%202/media/image7.png)
 
+1.  Select **SQL Authetication** and use the credentials:
+
+    - Server admin login: +++sqladmin+++
+
+    - Password: +++Pa55w0rd12345+++
+
 8.  Click on **Review +create.**
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%202/media/image8.png)
@@ -612,6 +618,7 @@ chat to create a complete end-to-end solution. Most importantly, you
 ensured that every response is grounded in verified medical research,
 demonstrating how AI can be used responsibly and effectively in
 real-world healthcare and research environments.
+
 
 
 
