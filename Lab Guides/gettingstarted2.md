@@ -28,16 +28,6 @@ Participants should have:
 
 - Experience using development tools like SQL Server Management Studio (SSMS), Visual Studio Code, GitHub Copilot, and command-line tools.
 
-## Architecture
-
-In this lab, you will use Microsoft Sentinel to collect, analyze, and respond to security events from multiple data sources. The workflow begins by deploying a Log Analytics workspace and enabling Microsoft Sentinel for centralized log collection. You will connect various security data sources using built-in data connectors, including Azure Active Directory, Microsoft 365 Defender, and other supported services. Threat intelligence will be integrated into Sentinel to enrich alerts with known malicious indicators, enhancing the accuracy of detections. You will explore the Content Hub to deploy prebuilt analytics rules, hunting queries, and workbooks for faster detection and visualization. Additionally, you will enable User and Entity Behavior Analytics (UEBA) to profile normal user activity and detect anomalies.
-
-Throughout the lab, you will investigate generated incidents, run hunting queries, and use automated playbooks to respond to threats, simulating a complete security operations workflow from detection to remediation.
-
-## Architecture Diagram
-
-![Image](../images/ArcDay1.png)
-
 ## Explanation of Components
 
 The architecture for this lab involves the following key components:
