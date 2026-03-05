@@ -211,7 +211,7 @@ Generate queries using natural language and improve productivity.
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image22.png)
 
-	>![Alert] Make sure **Agent** mode is selected and you can
+	>[!Alert] Make sure **Agent** mode is selected and you can
     select the model as per your requirements.
 
 16. Enter the **prompt** to create a stored procedure under the
@@ -718,3 +718,4 @@ end of this exercise, you not only created a functional inventory system
 but also experienced how modern SQL development combines database
 design, AI assistance, governance, and API integration to build
 scalable, secure, and application-ready data solutions.
+
