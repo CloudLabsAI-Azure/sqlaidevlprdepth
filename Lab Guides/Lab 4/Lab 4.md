@@ -277,7 +277,7 @@ Generate queries using natural language and improve productivity.
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image29.png)
 
-**Execute the Stored Procedure:** Now, we will restock the product.
+	**Execute the Stored Procedure:** Now, we will restock the product.
 
 23. Execute the stored procedure with the below given query.
 
@@ -718,4 +718,5 @@ end of this exercise, you not only created a functional inventory system
 but also experienced how modern SQL development combines database
 design, AI assistance, governance, and API integration to build
 scalable, secure, and application-ready data solutions.
+
 
