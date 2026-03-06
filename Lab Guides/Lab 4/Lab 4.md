@@ -266,7 +266,7 @@ Generate queries using natural language and improve productivity.
 
     ```
     SELECT ProductID, ProductName, StockQuantity
-    FROM Products
+    FROM core.Products
     WHERE ProductID = 1;
     ```
 
@@ -282,7 +282,7 @@ Generate queries using natural language and improve productivity.
 23. Execute the stored procedure with the below given query.
 
     ```
-    EXEC RestockProduct
+    EXEC core.RestockProduct
     @ProductID = 1,
     @QuantityToAdd = 10;
     ```
@@ -300,7 +300,7 @@ Generate queries using natural language and improve productivity.
 
     ```
     SELECT ProductID, ProductName, StockQuantity
-    FROM Products
+    FROM core.Products
     WHERE ProductID = 1;
     ```
 
@@ -379,7 +379,7 @@ Goal: Apply role-based access and masking
 
     ```
     SELECT ProductID, ProductName, StockQuantity
-    FROM Products;
+    FROM core.Products;
     ```
 
     Admin has the unrestricted access so you will be having full data visibility.
@@ -392,7 +392,7 @@ Goal: Apply role-based access and masking
     ```
     EXECUTE AS USER = 'InventoryUser';
     SELECT ProductID, ProductName, StockQuantity
-    FROM Products;
+    FROM core.Products;
     REVERT;
     ```
 
@@ -408,7 +408,7 @@ Goal: Apply role-based access and masking
 
     ```
     EXECUTE AS USER = 'InventoryUser';
-    UPDATE Products
+    UPDATE core.Products
     SET StockQuantity = 100
     WHERE ProductID = 1;
     REVERT;
@@ -454,7 +454,7 @@ Goal: Apply role-based access and masking
     (InventoryUser)
 
     ```
-    EXECUTE AS USER = InventoryUser;
+    EXECUTE AS USER = 'InventoryUser';
     SELECT ProductName, Price
     FROM core.Products;
     REVERT;
@@ -478,7 +478,7 @@ Goal: Apply role-based access and masking
     concept.
 
     ```
-    EXECUTE AS USER = InventoryUser;
+    EXECUTE AS USER = 'InventoryUser';
     SELECT ProductName, Price
     FROM core.Products;
     REVERT;
@@ -554,15 +554,10 @@ Goal: Apply role-based access and masking
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image55.png)
 
-    +++dab –version+++
+    +++dab –-version+++
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image56.png)
-
-    +++dab init --database-type mssql+++
-    
-    ![A screenshot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image57.png)
 
 11. You will notice that under SQLDB folder, a new **dab-config.json**
     file is created.
@@ -573,7 +568,7 @@ Goal: Apply role-based access and masking
 12. Open the file and find the **Connection String**. Within the double
     quotes, enter this connection string:
 
-    +++Server=localhost;Database=SmartInventoryDB;IntegratedSecurity=true;TrustServerCertificate=true;+++
+    +++Server=<SQL_SERVER>;Database=SmartInventoryDB;User ID=sqlvmuser;Password=<SQL_PASSWORD>;TrustServerCertificate=True;+++
 
     ![A screenshot of a computer program Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image59.png)
@@ -716,6 +711,8 @@ end of this exercise, you not only created a functional inventory system
 but also experienced how modern SQL development combines database
 design, AI assistance, governance, and API integration to build
 scalable, secure, and application-ready data solutions.
+
+
 
 
 
