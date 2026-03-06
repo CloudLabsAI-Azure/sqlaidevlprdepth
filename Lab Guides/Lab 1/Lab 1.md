@@ -257,7 +257,7 @@ VS Code.
 
 ### Exercise 5: Import PatientNotes.csv 
 
-1 . Run below query to Enable required SQL Server 2025 features
+1. Run the query to Enable required SQL Server 2025 features
 
 ```
 USE ContosoHospitalDB;
@@ -275,6 +275,54 @@ GO
 ```
 
 ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image38.png)
+
+2.  Right-click Database → Tasks → Import Flat File as shown in the
+    image below.
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image60.png)
+
+3.  Click on **Next** on the Introduction page.
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image61.png)
+
+4.  **Browse** the file on the Specify Input file section.
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image62.png)
+
+5.  Select **PatientNotes.csv** file from C:\Labfiles folder.
+
+    ![](./media/image63.png)
+
+6.  Click on **Next** to proceed.
+
+    ![](./media/image64.png)
+
+7.  Preview the data and click on **Next**.
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image65.png)
+
+8.  Keep the columns as is and click on **Next**.
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image66.png)
+
+9.  **Finish** the process.
+
+    ![A screenshot of a computer Description automatically
+    generated](./media/image67.png)
+
+10. Once the operation is completed, close the window.
+
+    ![](./media/image68.png)
+
+11. Expand the tables section under the database and notice that the
+    table is created.
+
+    ![](./media/image69.png)
 
 ### Exercise 6: Create external embedding model
 
@@ -637,15 +685,3 @@ meaning** to a doctor's query, using vector embeddings.
 ## Conclusion:
 
 This lab demonstrates how SQL Server 2025 evolves beyond a traditional relational database into an AI-powered data platform. By integrating Azure OpenAI embeddings directly within SQL, participants build a semantic case retrieval agent that allows doctors to search patient cases using natural language. Through vector indexing, cosine similarity search, and hybrid filtering, learners gain hands-on experience in implementing real-world AI-driven clinical search solutions inside the database engine.
-
-
-
-
-
-
-
-
-
-
-
-
