@@ -192,7 +192,7 @@ By completing this lab, you will be able to:
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%202/media/image32.png)
 
 11.  Browse the file library_books.csv form C:\Labfiles folder, enter the
-    table name as **MedicalResearch** and click **Next**.
+    table name as +++MedicalResearch+++ and click **Next**.
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%202/media/image33.png)
 
@@ -215,8 +215,8 @@ By completing this lab, you will be able to:
 15. Run below queries to verify the data in the table.
 
     ```
-    SELECT COUNT(*) FROM dbo.library_books;
-    SELECT TOP 5 Title, Category FROM dbo.library_books;
+    SELECT COUNT(*) FROM dbo.MedicalResearch;
+    SELECT TOP 5 Title, Category FROM dbo.MedicalResearch;
     ```
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%202/media/image38.png)
@@ -610,6 +610,7 @@ chat to create a complete end-to-end solution. Most importantly, you
 ensured that every response is grounded in verified medical research,
 demonstrating how AI can be used responsibly and effectively in
 real-world healthcare and research environments.
+
 
 
 
