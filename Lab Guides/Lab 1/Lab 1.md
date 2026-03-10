@@ -18,87 +18,88 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 
 - Compare traditional keyword search with semantic search
 
-### Exercise 1: **Provision SQL Server on Azure VM**
+## Exercise 1: **Provision SQL Server on Azure VM**
 
 1.  Open the browser, enter the Azure SQL hub at
-    +++https://aka.ms/azuresqlhub+++ or
     +++https://portal.azure.com+++ and sign in with your Azure subscription
-    account. Enter +++Azure SQL+++ in the search bar and select it.
+    account. 
+	
+	Username: +++@lab.CloudPortalCredential(User1).Username+++
+	
+	TAP: +++@lab.CloudPortalCredential(User1).AccessToken+++
+	
+1.  Enter +++Azure SQL+++ in the search bar and select it.
 
-    ![](./media/image1.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image1.png)
 
-2.  In the pane for **SQL Server on Azure Virtual Machines**,
-    select **Show options**.
+2.  In the pane for **SQL Server on Azure Virtual Machines**,
+    select **Show options**.
 
-    ![](./media/image2.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image2.png)
 
-3.  In the **Select an image offer** box, choose a SQL Server image
-    (such as **Free SQL Server License: SQL Server 2025 Enterprise Developer on Windows Server 2025**).
-    Select **Create virtual machine**.
+3.  In the **Select an image offer** box, choose a SQL Server image
+    (such as **Free SQL Server License: SQL Server 2025 Enterprise Developer on Windows Server 2025**).
+    Select **Create virtual machine**.
 
-    ![](./media/image3.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image3.png)
 
-4.  On the **Basics** tab, provide the following information and then
+4.  On the **Basics** tab, provide the following information and then
     click **Next: Disk**
 
-    - Subscription :- Select your subscription
+    - Subscription : **@lab.CloudSubscription.Name**
 
-    - In the **Resource group** - select an existing resource group from the
-    list or choose **Create new** to create a new resource group.
+    - Resource Group: **@lab.CloudResourceGroup(ResourceGroup1).Name**
 
-    - Virtual machine name- **azuresqlvm**
+    - Virtual Machine Name: +++azuresqlvm@lab.labinstance.id+++
 
-    - **Region** - Central US
+    - Region: **@lab.CloudResourceGroup(ResourceGroup1).Location**
 
-    - **Availability options** – *Availability zone*.
+    - **Availability options** – *Availability zone*.
 
         1.  **Zone options** – Self-selected zone
 
         2.  **Availability zone** -Zone 1
 
-    - In the **Image** list, select **Free SQL Server License: SQL Server
-    2025 Enterprise Developer on Windows Server 2025** if it's not already
-    selected.
+    - **Image** - **Free SQL Server License: SQL Server 2025 Enterprise Developer on Windows Server 2025**
 
-    - Select **See all sizes** for the **Size** of the virtual machine and
-    search for the **E4ds_v5** offering. This is one of the minimum
-    recommended VM sizes for SQL Server on Azure VMs. be sure to clean up
-    your resources once you're done with them to prevent any unexpected
-    charges.
+    - **Size** - Select **all sizes** and search for +++E4ds_v5+++
+	
+		>[!Note] This is one of the minimum recommended VM sizes for SQL Server on Azure VMs. be sure to clean up your resources once you're done with them to prevent any unexpected charges.
 
-    Enter admin details as below
+    - Enter admin details as below:
 
-    Username : **sqlvmuser**
-    Password: **AZvmsql12345**
+	    Username : +++sqlvmuser+++
 
-    - Under **Inbound port rules**, choose **Allow selected ports**, and
-    then select **RDP (3389)** from the dropdown list.
+	    Password: +++AZvmsql12345+++
 
-    ![](./media/image4.png)
+    - Under **Inbound port rules**, choose **Allow selected ports**, and
+    then select **RDP (3389)** from the dropdown list.
 
-    ![](./media/image5.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image4.png)
 
-    ![](./media/image6.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image5.png)
 
-    ![](./media/image7.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image6.png)
 
-    ![](./media/image8.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image7.png)
 
-    ![](./media/image9.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image8.png)
+
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image9.png)
 
 5.  Keep default disk type values and click **Next: Networking**
 
-    ![](./media/image10.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image10.png)
 
 6.  On Management page,
 
-    ![](./media/image11.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image11.png)
 
-    ![](./media/image12.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image12.png)
 
-7.  Click on **SQL Server management** tab
+7.  Click on **SQL Server Settings** tab
 
-    ![](./media/image13.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image13.png)
 
 8.  On SQL server setting spage, select below values and then click on **Review + create.**
 
@@ -106,170 +107,147 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
     
     **SQL authentication:** Enable
 
-    ![](./media/image14.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image14.png)
 
 9.  Once the validation is passed, click on **Create**.
 
-    ![](./media/image15.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image15.png)
 
 10. Wait for the deployment to complete.
 
-    ![](./media/image16.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image16.png)
 
-    ![](./media/image17.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image17.png)
 
 11. Make sure you copy the **Public IP Address** to connect from SSMS in
     next task
 
-    ![](./media/image18.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image18.png)
 
 ### Exercise 2: Setup SQL Server 2025 environment 
 
-**Goal:** You have SQL Server 2025 running and can connect with SSMS or
+>[!Note] You have SQL Server 2025 running and can connect with SSMS or
 VS Code.
 
 1.  Connect using SSMS:
 
-    - Server: \<VM Public IP\>,1433 (or local instance)
+    - Server: +++< VM Public IP >,1433+++ (or local instance)
 
-    - Auth: SQL Authentication
+    - Auth: SQL Server Authentication
+
+		- Username : +++sqlvmuser+++
+	
+		- Password: +++AZvmsql12345+++
 
     - Check “Trust server certificate” (if needed)
 
-    ![](./media/image19.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image19.png)
 
-    ![](./media/image20.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image20.png)
 
 ### Exercise 3: Create Azure OpenAI resource and deploy Embedding Model 
 
-1.  Switch back to Azure and search for **Azure OpenAI** and select it.
+1.  Switch back to Azure and search for +++Azure OpenAI+++ and select it.
 
-    ![](./media/image21.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image21.png)
 
 2.  Click on Create-\> Azure OpenAI.
 
-    ![](./media/image22.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image22.png)
 
 3.  Enter below values and click **Next**.
 
-    Subscription: your Azure subscription
+    Subscription: **@lab.CloudSubscription.Name**
 
-    Resource Group: Resourcegroup1
+    Resource Group: **@lab.CloudResourceGroup(ResourceGroup1).Name**
 
-    Region: eastus
+    Region: **@lab.CloudResourceGroup(ResourceGroup1).Location**
 
-    Name: **azsqlaoaiXXXX**(replace XXXX with unique number)
+    Name: +++azsqlaoai@lab.labinstance.id+++
 
-    Pricing tier: Standard S0
+    Pricing tier: **Standard S0**
 
-    ![](./media/image23.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image23.png)
 
 4.  Keep the default value and click Next.
 
-    ![](./media/image24.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image24.png)
 
 5.  Keep default tag and click Next.
 
-    ![](./media/image25.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image25.png)
 
 6.  Review the details and click Create.
 
-    ![](./media/image26.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image26.png)
 
 7.  Wait for the deployment successful and click on **Go to resource.**
 
-    ![](./media/image27.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image27.png)
 
 8.  Expand Resource management-\> keys and endpoints from left
-    navigation menu and copy endpoint and key value in a notepad to use
+    navigation menu and copy the **endpoint and key value** in a notepad to use
     in next tasks.
 
-    ![](./media/image28.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image28.png)
 
 9.  Click on **Overview** and select **Go to Foundry portal**
 
-    ![](./media/image29.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image29.png)
 
 10. Click on Deployments under Shared resource from left navigation
     menu. Select Depplot model-\> Deploy base model.
 
-    ![](./media/image30.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image30.png)
 
-11. Search for text-embedding , select **text-embedding-3-small** model and
+11. Search for +++text-embedding+++, select **text-embedding-3-small** model and
     click Confirm.
 
-    ![](./media/image31.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image31.png)
 
-12. Keep the default values and click **Customize**.
+12. Select **Customize**.
 
-    ![](./media/image32.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image32.png)
 
 13. Set Tokens per Minute Rate limit to max and click **Deploy**.
 
-    ![](./media/image33.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image33.png)
 
-    ![](./media/image34.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image34.png)
 
 ### Exercise 4: Create Data base and tables
 
-1.  Switch back to **SSMS**. Right click on server and select New database
+1.  Switch back to **SSMS**. Right click on the **Databases** folder and select New database
     to Get patient case data into SQL Server.
 
-    ![](./media/image35.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image35.png)
 
 2.  Enter the database name as +++ContosoHospitalDB+++ and click OK.
 
-    +++CREATE DATABASE ContosoHospitalDB;+++
+    >[!Note] Another way to create the DB is by running the command: +++CREATE DATABASE ContosoHospitalDB;+++
 
-    ![](./media/image36.png)
-
-3.  Run below query to create a table
-
-    ```
-    USE ContosoHospitalDB;
-    GO
-
-    DROP TABLE IF EXISTS dbo.PatientEmbeddings;
-    DROP TABLE IF EXISTS dbo.PatientNotes;
-    GO
-
-    CREATE TABLE dbo.PatientNotes
-    (
-        EncounterID        INT           NOT NULL PRIMARY KEY,
-        AgeGroup           NVARCHAR(50)   NULL,
-        Gender             NVARCHAR(20)   NULL,
-        AdmissionDate      DATE          NULL,
-        Department         NVARCHAR(80)   NULL,
-        ChiefComplaint     NVARCHAR(200) NULL,
-        Summary            NVARCHAR(MAX) NULL,
-        DiagnosisKeywords  NVARCHAR(400) NULL,
-        DischargePlan      NVARCHAR(200) NULL
-    );
-    GO
-    ```
-
-    ![](./media/image37.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image36.png)
 
 ### Exercise 5: Import PatientNotes.csv 
 
 1. Run the query to Enable required SQL Server 2025 features
 
-    ```
-    USE ContosoHospitalDB;
-    GO
+```
+USE ContosoHospitalDB;
+GO
 
-    -- 1. Enable external REST endpoint usage
-    EXEC sp_configure 'external rest endpoint enabled', 1;
-    RECONFIGURE WITH OVERRIDE;
-    GO
+-- 1. Enable external REST endpoint usage
+EXEC sp_configure 'external rest endpoint enabled', 1;
+RECONFIGURE WITH OVERRIDE;
+GO
 
-    -- 2. Enable preview features (needed for AI/vector features in many SQL 2025 builds)
-    ALTER DATABASE SCOPED CONFIGURATION
-    SET PREVIEW_FEATURES = ON;
-    GO
-    ```
+-- 2. Enable preview features (needed for AI/vector features in many SQL 2025 builds)
+ALTER DATABASE SCOPED CONFIGURATION
+SET PREVIEW_FEATURES = ON;
+GO
+```
 
-    ![](./media/image38.png)
+![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image38.png)
 
 2.  Right-click Database → Tasks → Import Flat File as shown in the
     image below.
@@ -333,10 +311,10 @@ VS Code.
     GO
     ```
 
-    ![](./media/image39.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image39.png)
 
 2.  Run below query to Create database scoped credential. The credential
-    name must match the URL you reference in the external model.
+    name must match the URL you reference in the external model and place your **Azure OpenAI Endpoint Key**
 
     ```
     USE ContosoHospitalDB;
@@ -354,11 +332,11 @@ VS Code.
     GO
     ```
 
-    ![](./media/image40.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image40.png)
 
 3.  Switch back to Foundry portal and copy the model endpoint value:
 
-    ![](./media/image41.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image41.png)
 
 4.  Update below query with Azure openAI end point and Embeddign smodel
     location (Foundry portal ) and run to create external model
@@ -384,7 +362,7 @@ VS Code.
     GO
     ```
 
-    ![](./media/image42.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image42.png)
 
 ### Exercise 7: Generate embeddings and store vectors
 
@@ -405,7 +383,7 @@ VS Code.
     GO
     ```
 
-    ![](./media/image43.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image43.png)
 
 2.  Run below query to populate embeddings
 
@@ -422,16 +400,16 @@ VS Code.
     GO
     ```
 
-    ![](./media/image44.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image44.png)
 
 3.  Run below query to validate embeddings:
 
-    +++SELECT COUNT(*) AS TotalEmbeddings FROM dbo.PatientEmbeddings;+++
-    +++SELECT * FROM dbo.PatientEmbeddings;+++
+    `SELECT COUNT(*) AS TotalEmbeddings FROM dbo.PatientEmbeddings;`
+    `SELECT * FROM dbo.PatientEmbeddings;`
 
-    ![](./media/image45.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image45.png)
 
-    ![](./media/image46.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image46.png)
 
 4.  Run below query to create vector index (DiskANN)
 
@@ -445,7 +423,7 @@ VS Code.
     GO
     ```
 
-    ![](./media/image47.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image47.png)
 
 ### Exercise 8: Semantic case retrieval (doctor symptom query)
 
@@ -483,7 +461,7 @@ meaning** to a doctor's query, using vector embeddings.
     ORDER BY CosineDistance ASC;
     ```
 
-    ![](./media/image48.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image48.png)
 
 2.  Run semantic search with clinical filters.this query filters
     Department = Pulmonology and Age group = 60–74
@@ -517,7 +495,7 @@ meaning** to a doctor's query, using vector embeddings.
     ORDER BY CosineDistance ASC;
     ```
 
-    ![](./media/image49.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image49.png)
 
 3.  Run below query to add clinical filter
 
@@ -552,7 +530,7 @@ meaning** to a doctor's query, using vector embeddings.
     ORDER BY CosineDistance ASC;
     ```
 
-    ![](./media/image50.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image50.png)
 
 4.  I’ve kept your parameters and added in‑proc embedding generation.
     This SP uses exact cosine; you can add an @useAnn BIT = 0 switch
@@ -594,7 +572,7 @@ meaning** to a doctor's query, using vector embeddings.
     GO
 
     ```
-    ![](./media/image51.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image51.png)
 
 5.  Run below query to test:
 
@@ -611,24 +589,24 @@ meaning** to a doctor's query, using vector embeddings.
     @topK = 5;
     ```
 
-    ![](./media/image52.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image52.png)
 
 ### Exercise 9: Compare keyword vs semantic search
 
 1.  Run below queries and the count should match
 
     ```
-    SELECT COUNT(\*) FROM dbo.PatientNotes;
-    SELECT COUNT(\*) FROM dbo.PatientEmbeddings;
+    SELECT COUNT(*) FROM dbo.PatientNotes;
+    SELECT COUNT(*) FROM dbo.PatientEmbeddings;
     ```
 
-    ![](./media/image53.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image53.png)
 
 2.  Run below query to test embedding generation:
 
     +++SELECT AI_GENERATE_EMBEDDINGS(N'test case' USE MODEL ClinicalEmbeddingModel);+++
 
-    ![](./media/image54.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image54.png)
 
 3.  Run below query -Find similar cases for fever + painful urination
     and filter to Infectious Disease
@@ -639,14 +617,20 @@ meaning** to a doctor's query, using vector embeddings.
     @topK = 5,
     @department = N'Infectious Disease';
     ```
-    ![](./media/image55.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image55.png)
 
 4.  Run below query with and without department filter. Observe:Mix of
     departments,Cardiology,Emergency,Internal Medicine.
 
-    ![](./media/image56.png)
+    ```
+    EXEC dbo.FindSimilarPatientCases
+    @doctorQuery = N'Chest pain on exertion',
+    @topK = 5;
+    ```
 
-5.  Run below query With Filter (Cardiology Only). Observe: Only cardiology cases ,Possibly fewer results,Ranking slightly changes
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image56.png)
+
+6.  Run below query With Filter (Cardiology Only). Observe: Only cardiology cases ,Possibly fewer results,Ranking slightly changes
 
     ```
     EXEC dbo.FindSimilarPatientCases
@@ -655,9 +639,9 @@ meaning** to a doctor's query, using vector embeddings.
     @department = N'Cardiology';
     ```
 
-    ![](./media/image57.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image57.png)
 
-6.  Run below query with Hybrid search pattern
+7.  Run below query with Hybrid search pattern
 
     ```
     EXEC dbo.FindSimilarPatientCases
@@ -665,7 +649,7 @@ meaning** to a doctor's query, using vector embeddings.
     @topK = 5;
     ```
 
-    ![](./media/image58.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image58.png)
 
     ```
     EXEC dbo.FindSimilarPatientCases
@@ -673,8 +657,13 @@ meaning** to a doctor's query, using vector embeddings.
     @topK = 5;
     ```
 
-    ![](./media/image59.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%201/media/image59.png)
+
+1. Exit and close **SSMS** and do NOT save. 
 
 ## Conclusion:
 
 This lab demonstrates how SQL Server 2025 evolves beyond a traditional relational database into an AI-powered data platform. By integrating Azure OpenAI embeddings directly within SQL, participants build a semantic case retrieval agent that allows doctors to search patient cases using natural language. Through vector indexing, cosine similarity search, and hybrid filtering, learners gain hands-on experience in implementing real-world AI-driven clinical search solutions inside the database engine.
+
+
+
