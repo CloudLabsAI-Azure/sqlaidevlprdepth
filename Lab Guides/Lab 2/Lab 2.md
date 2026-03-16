@@ -373,7 +373,7 @@ By completing this lab, you will be able to:
 
     - Schema : **dbo**
 
-    - Table name: +++MedicalResearch+++
+    - Table name: **MedicalResearch**
 
     - SQL server authentication password: +++Pa55w0rd12345+++
 
@@ -610,6 +610,7 @@ chat to create a complete end-to-end solution. Most importantly, you
 ensured that every response is grounded in verified medical research,
 demonstrating how AI can be used responsibly and effectively in
 real-world healthcare and research environments.
+
 
 
 
