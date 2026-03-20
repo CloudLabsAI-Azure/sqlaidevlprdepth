@@ -1,6 +1,6 @@
-# Lab 4: Building a Secure Inventory System with SQL Server 2025, GitHub Copilot, and Data APIs​
+# Lab 4: Building a Secure Inventory System with SQL Server 2025, GitHub Copilot, and Data APIs
 
-In today’s retail and warehouse environments, businesses need fast,
+In today's retail and warehouse environments, businesses need fast,
 secure, and intelligent ways to manage inventory data. In this hands-on
 lab, you step into the role of a database developer working for a
 growing retail company that wants to modernize its inventory system.
@@ -8,10 +8,10 @@ Using **SQL Server 2025**, **GitHub Copilot**, and **Data API Builder**,
 you build the SmartInventoryDB from scratch, automate development tasks
 with AI assistance, apply security controls, and expose the database as
 REST and GraphQL APIs for application integration. This lab demonstrates
-how modern SQL development goes beyond writing queries — it integrates
+how modern SQL development goes beyond writing queries - it integrates
 AI, security, and API-driven architecture.
 
-## Objectives**
+## Objectives
 
 By completing this lab, participants will be able to:
 
@@ -28,68 +28,58 @@ By completing this lab, participants will be able to:
 - Expose database tables as REST and GraphQL APIs using **Azure Data API
   Builder**
 
-## **Exercise 1: Connect SQL Server 2025 on VS Code**
+## Exercise 1: Connect SQL Server 2025 on VS Code
 
-1.  Open **Visual Studio Code** and navigate to the **Extensions**
-    section from the left pane.
+1. In the search bar, type **Visual Studio Code (1)** and select **Visual Studio Code (2)** to open the application.
 
-2.  Search for +++GitHub Copilot+++ Extension and make sure it is
-    installed.
+    ![](./media/2new0.png)
 
-    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image1.png)
+1. In **Visual Studio Code**, open the **Extensions (1)** tab, search for **GitHub Copilot (2)**, select it **(3)** from the results, and click **Install (4)** to add the extension.
 
-3.  Now, Search for +++MSSQL+++ Extension and click on **Install**. The
-    MSSQL extension allows VS Code to connect and run queries against
-    SQL Server.
+    ![](./media/2new1.png)
 
-    ![A screenshot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image2.png)
+1. In **Visual Studio Code**, open the **Extensions** panel, search for **MSSQL (1)**, select **SQL Server (mssql) (2)** by Microsoft, and click **Install (3)** to enable SQL Server connectivity and query execution.
 
-4.  Click on **Close** if welcome screen appears.
+    ![](./media/2new2.png)
 
-    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image3.png)
+1. Click on **Close** if welcome screen appears.
 
-5.  To create the connection, open the **connection** dialog.
+    ![](./media/2new3.png)
 
-    ![A screenshot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image4.png)
+1. In **Visual Studio Code**, go to the MSSQL Welcome page and click **Open Connection Dialog** to start creating a new SQL Server connection.
 
-6.  On the Connection Dialog, enter the **Server Name** as the **Public
-    IP address** of the VM that you have copied earlier followed by a
-    comma and default port number (1433). You can see the example below:
+    ![](./media/2new4.png)
 
-    **Your Public IP address,1433**
+1. On Connect to Database page, enter the following details:
 
-    ![A screenshot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image5.png)
+    - Enter the **Server name** as **Public IP address with port 1433** that you copied in Exercise 1 **(1)**
+    - Select **SQL Login (2)** as the authentication type
+    - Enter **Username** as **sqlvmuser (3)**
+    - Provide the **Password** as **AZvmsql12345 (4)**
+    - Set **Database name** to **master (4)**
+    - Click **Connect (5)**
 
-7.  Select **Authentication** type as **SQL Login** and enter the
-    **username** as +++sqlvmuser+++ and **password** as +++AZvmsql12345+++ that you have created in the VM in Lab 1.
+      ![](./media/2new5.png)
 
-8.  Initially, you can enter the database name as +++master+++. Click on **Connect**.
-
-    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image6.png)
-
-9.  Enable the **Trust Server Certificate**.
+1. Enable the **Trust Server Certificate**.
 
     ![A screenshot of a computer error Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image7.png)
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image7.png)      
 
-10. You should now see your server in the SQL Server panel.
+1. You should now see your server in the SQL Server panel.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image8.png)
 
-## **Exercise 2: Copilot Experiences for Schema Design & Query Generation** 
+## Exercise 2: Copilot Experiences for Schema Design & Query Generation
 
-### **Task 1: Create a Database**
+### Task 1: Create a Database
 
-1.  **Right-click** on the Server and select **New Query** option.
+1. In **Visual Studio Code**, under the **SQL Server Connections (1)**, right-click your connected server (master database) and select **New Query (2)** to open a query editor for running SQL commands.
 
-    ![A screenshot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image9.png)
+    ![](./media/2new6.png)
 
-2.  Create a **new database** by entering the below query in the editor
+1. Create a **new database** by entering the below query in the editor
     and click on **Run** button to execute the query.
 
     ```
@@ -101,21 +91,21 @@ By completing this lab, participants will be able to:
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image10.png)
 
-3.  You should now see “Commands completed successfully”. To verify the
+1. You should now see “Commands completed successfully”. To verify the
     database, expand the **Databases** section (You might need to
     refresh it once).
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image11.png)
 
-### **Task 2: Create a Schema and a Table**
+### Task 2: Create a Schema and a Table
 
-4.  Select the **SmartInventoryDB** and open a **new query** editor.
+1. Select the **SmartInventoryDB** and open a **new query** editor.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image12.png)
 
-5.  Enter the below query. This will create a **schema** as ‘**core’**
+1. Enter the below query. This will create a **schema** as ‘**core’**
     and a **table** as ‘**Products’** with some columns:
 
     ```
@@ -137,14 +127,14 @@ By completing this lab, participants will be able to:
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image13.png)
 
-6.  Once you see the output as commands completed successfully,
+1. Once you see the output as commands completed successfully,
     **refresh** the database from the left pane and expand the
     **Tables** section to see the new **Products** table.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image14.png)
 
-7.  Insert **Sample data** as per the columns you have created in the
+1. Insert **Sample data** as per the columns you have created in the
     previous step. **Execute** the query and you’ll see the number of
     rows affected as the output:  
       
@@ -159,27 +149,34 @@ By completing this lab, participants will be able to:
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image15.png)
 
-### **Task 3: Use Copilot to generate SQL query**
+### Task 3: Use Copilot to generate SQL query
 
 Generate queries using natural language and improve productivity.
 
-8.  To access copilot features in VS Code, you need to **sign in** with
-    your github account. Navigate to **Settings** from the left-bottom
-    pane and **sign in to sync settings**.
+1. In **Visual Studio Code**, click the **Settings (gear) icon (1)** and select **Backup and Sync Settings (2)**.
 
-    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image16.png)
 
-9.  Enter the **GitHub account** credentials and click on **Sign in**.
+    ![](./media/2new12.png)
 
-    ![A screenshot of a login box Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image17.png)
+1. Click **Sign in** in the Settings Sync window to enable syncing in VS Code.
 
-10. You can now switch back to the **VS Code** and check you’re signed
-    in.
+    ![](./media/2new13.png)
 
-    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image18.png)
+1. Select **Sign in with GitHub** to continue signing in.
 
-11. Now, generate a query using copilot. Enter the **comment** given
+    ![](./media/2new14.png)
+
+1. Enter your **GitHub username/email and password**, then click **Sign in**.
+
+    >**Note:** Use your personal GitHub credentials to sign in the GitHub Copilot.
+
+    ![](./media/new-12.png)
+
+1. Click the **Accounts icon (1)** in VS Code and verify that your **GitHub account is signed in (2)**.
+
+    ![](./media/2new18.png)
+
+1. Now, generate a query using copilot. Enter the **comment** given
     below and press **Enter**. Wait for the copilot suggestions.
 
     ```
@@ -190,31 +187,33 @@ Generate queries using natural language and improve productivity.
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image19.png)
 
-12. Press **Tab** to accept the copilot **suggestions**. Copilot reads
+1. Press **Tab** to accept the copilot **suggestions**. Copilot reads
     your comment and generates SQL query automatically.
+
+    ![](./media/2new20.png)    
 
     Once the query is accepted, you can proceed with executing the command.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image20.png)
 
-13. Based on the comment and the query generated by copilot, you can see
+1. Based on the comment and the query generated by copilot, you can see
     the output of two products that are having the StockQuantity less
     than 50.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image21.png)
 
-### **Task 4: Use Copilot Chat to create a Stored Procedure**
+### Task 4: Use Copilot Chat to create a Stored Procedure
 
-14. From the top of the VS Code, open a **new copilot chat**.
+1. From the top of the VS Code, open a **new copilot chat**.
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image22.png)
 
-15. **Important:** Make sure **Agent** mode is selected and you can
+    >**Important:** Make sure **Agent** mode is selected and you can
     select the model as per your requirements.
 
-16. Enter the **prompt** to create a stored procedure under the
+1. Enter the **prompt** to create a stored procedure under the
     SmartInventoryDB:
 
     ```
@@ -233,33 +232,33 @@ Generate queries using natural language and improve productivity.
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image23.png)
 
-17. You will see a query is generated to create a stored procedure.
+1. You will see a query is generated to create a stored procedure.
     Click on **Apply in Editor.**
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image24.png)
 
-18. VS Code will ask you that you want to open the query in the new
+1. VS Code will ask you that you want to open the query in the new
     editor or the existing one. You can select **New untitled editor**.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image25.png)
 
-19. Once added in the Editor, Execute the query and make sure you see
+1. Once added in the Editor, Execute the query and make sure you see
     the commands completed successfully as the output.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image26.png)
 
-### **Task 5: Verify the Stored Procedure**
+### Task 5: Verify the Stored Procedure
 
 **Verify Existing Product Data:**
 
-20. Open a **new query** editor for the **SmartInventoryDB**.
+2. Open a **new query** editor for the **SmartInventoryDB**.
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image27.png)
 
-21. **Execute** the below query. This will check the current stock and
+2. **Execute** the below query. This will check the current stock and
     note down the current **StockQuantity**.
 
     ```
@@ -271,13 +270,13 @@ Generate queries using natural language and improve productivity.
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image28.png)
 
-22. The output shows the current StockQuantity as 5.
+2. The output shows the current StockQuantity as 5.
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image29.png)
 
     **Execute the Stored Procedure:** Now, we will restock the product.
 
-23. Execute the stored procedure with the below given query.
+2. Execute the stored procedure with the below given query.
 
     ```
     EXEC RestockProduct 
@@ -289,12 +288,12 @@ Generate queries using natural language and improve productivity.
 
     - **@QuantityToAdd** = 10 --- How many units we are adding
 
-    **Check the output where you’ll see the QuantityAdded =10 and NewStockQuantity = 15.**
+      **Check the output where you’ll see the QuantityAdded =10 and NewStockQuantity = 15.**
 
-    ![A screenshot of a computer Description automatically
+      ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image30.png)
 
-24. You can verify the updated stock again.
+2. You can verify the updated stock again.
 
     ```
     SELECT ProductID, ProductName, StockQuantity
@@ -309,19 +308,19 @@ Generate queries using natural language and improve productivity.
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image31.png)
 
-## **Exercise 3: Security & Governance with SQL Server 2025​**
+## Exercise 3: Security & Governance with SQL Server 2025​
 
 Goal - Apply role-based access and masking
 
-### **Task 1: Assign a Role and add a user in the database**
+### Task 1: Assign a Role and add a user in the database
 
-1.  **Right-click** on the SmartInventoryDB and select **New Query**
+1. **Right-click** on the SmartInventoryDB and select **New Query**
     option.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image32.png)
 
-2.  Run the query to assign a role. This command creates a database role
+1. Run the query to assign a role. This command creates a database role
     named **InventoryViewer** and grants it permission to read (SELECT)
     data from the **core.Products** table.
 
@@ -335,7 +334,7 @@ Goal - Apply role-based access and masking
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image33.png)
 
-3.  We cannot verify this role because a role cannot execute the
+1. We cannot verify this role because a role cannot execute the
     queries. Only a user can. **Create a login for a InventoryUser** and
     **Execute** the query:
 
@@ -346,7 +345,7 @@ Goal - Apply role-based access and masking
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image34.png)
 
-4.  Now, create the **Database User**. A login allows access to SQL
+1. Now, create the **Database User**. A login allows access to SQL
     Server. A user allows access to a specific database. Roles work at
     the database level, so the user must exist inside the database
     first.
@@ -361,7 +360,7 @@ Goal - Apply role-based access and masking
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image35.png)
 
-5.  You can now add this user to the Role. Run the below query:
+1. You can now add this user to the Role. Run the below query:
 
     ```
     ALTER ROLE InventoryViewer
@@ -371,9 +370,9 @@ Goal - Apply role-based access and masking
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image36.png)
 
-### **Task 2: Verify Permission Restriction for the User**
+### Task 2: Verify Permission Restriction for the User
 
-6.  **Verify as Admin (Current Login):** Run the given query
+1. **Verify as Admin (Current Login):** Run the given query
 
     ```
     SELECT ProductID, ProductName, StockQuantity
@@ -384,7 +383,7 @@ Goal - Apply role-based access and masking
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image37.png)
 
-7.  **Verify as InventoryUser (Role Member):**
+1. **Verify as InventoryUser (Role Member):**
 
     ```
     EXECUTE AS USER = 'InventoryUser';
@@ -402,7 +401,7 @@ Goal - Apply role-based access and masking
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image38.png)
 
-8.  **Test Permission Restriction:**
+1. **Test Permission Restriction:**
 
     ```
     EXECUTE AS USER = 'InventoryUser';
@@ -420,9 +419,9 @@ Goal - Apply role-based access and masking
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image39.png)
 
-### **Task 3: Dynamic Data Masking and Verify Unmask permission**
+### Task 3: Dynamic Data Masking and Verify Unmask permission
 
-9.  Run this query:
+1. Run this query:
 
     ```
     ALTER TABLE core.Products
@@ -485,16 +484,16 @@ Goal - Apply role-based access and masking
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image44.png)
 
-## **Exercise 4: Exposing SQL Data to AI Applications using Data API Builder​**
+## Exercise 4: Exposing SQL Data to AI Applications using Data API Builder
 
 Allow external applications to access database.
 
-1.  Open a **New terminal** in VS Code.
+1. Open a **New terminal** in VS Code.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image45.png)
 
-2.  Install **Data API Builder** with the help of this command:
+2. Install **Data API Builder** with the help of this command:
 
     ```
     dotnet tool install --global Microsoft.DataApiBuilder
@@ -506,46 +505,43 @@ Allow external applications to access database.
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image47.png)
 
-3.  Navigate to **File Explorer** and create **a new folder**.
+1. In the File Explorer navigate to the **Desktop (1)**, right-click inside the folder, select **New (2)**, and click **Folder (3)** to create a new folder.
+
+    ![](./media/2new23.png)
+
+1. Name the folder as **SQLDB**.
 
     ![A screenshot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image48.png)
+    generated](./media/2new24.png)
 
-4.  Name the folder as +++SQLDB+++
-
-    ![A screenshot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image49.png)
-
-5.  Switch back to **VS Code** and click on **Open folder** from the
+1. Switch back to **VS Code** and click on **Open folder** from the
     explorer.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image50.png)
 
-6.  Select the **SQLDB** folder to open in the VS Code.
+1. Select the **SQLDB** folder to open in the VS Code.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image51.png)
 
-7.  Once you have opened the folder, check the connection as it might
+1. Once you have opened the folder, check the connection as it might
     get disconnected. If you see a red dot, this means it is
     disconnected. 
     
-    To **connect** again, click on the Server and enter
-    the password as +++AZvmsql12345+++ that you have mentioned in the VM for the Server and
-    press **Enter**.
+1. To **connect** again, click on the Server and enter the password as **AZvmsql12345** that you have mentioned in the VM for the Server and press **Enter**.
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image52.png)
 
-8.  Green represents that the server is connected.
+8. Green represents that the server is connected.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image53.png)
 
-9.  Open a **new Terminal**.
+1. In **Visual Studio Code**, open the **Explorer (1)**, click the **ellpsis (2)**, go to **Terminal (3)**, and select **New Terminal (4)** to open a terminal window.
 
     ![A screenshot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image54.png)
+    generated](./media/2new26.png)
 
 10. Inside a new folder, initialize the config file. This command
     **initializes a new Data API Builder project configuration** for a
@@ -558,6 +554,8 @@ Allow external applications to access database.
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image55.png)
 
+    >**Note:** If you face any errors while running the above command, please close and restart the VS code.
+
 11. You will notice that under SQLDB folder, a new **dab-config.json**
     file is created.
 
@@ -568,8 +566,7 @@ Allow external applications to access database.
     quotes, enter this connection string and replace Public IP address in the Server and make sure UserID and password are correct. 
 
     ```
-    Server=<Public IP Address>,1433;Database=SmartInventoryDB;User
-    ID=sqlvmuser;Password=AZvmsql12345;TrustServerCertificate=True;
+    Server=<Public IP Address>,1433;Database=SmartInventoryDB;User ID=sqlvmuser;Password=AZvmsql12345;TrustServerCertificate=True;
     ```
 
     ![A screenshot of a computer program Description automatically
@@ -608,55 +605,52 @@ Allow external applications to access database.
 15. Make sure your dab-config.json file looks like this:
 
     ```
-    {  
-      "$schema":
-    "<https://github.com/Azure/data-api-builder/releases/download/v1.7.90/dab.draft.schema.json%22>,  
-      "data-source": {  
-        "database-type": "mssql",  
-        "connection-string":
-    "Server=20.106.17.61,1433;Database=SmartInventoryDB;User
-    ID=sqlvmuser;Password=AZvmsql12345;TrustServerCertificate=True;",  
-        "options": {  
-          "set-session-context": false  
-        }  
-      },  
-      "runtime": {  
-        "rest": {  
-          "enabled": true,  
-          "path": "/api",  
-          "request-body-strict": true  
-        },  
-        "graphql": {  
-          "enabled": true,  
-          "path": "/graphql",  
-          "allow-introspection": true  
-        },  
-        "mcp": {  
-          "enabled": true,  
-          "path": "/mcp"  
-        },  
-        "host": {  
-          "cors": {  
-            "origins": \[\],  
-            "allow-credentials": false  
-          },  
-          "authentication": {  
-            "provider": "StaticWebApps"  
-          },  
-          "mode": "development"  
-        }  
-      },  
-      "entities": {  
-    "Products": {  
-        "source": "core.Products",  
-        "permissions": \[  
-        {  
-            "role": "anonymous",  
-            "actions": \["read"\]  
-        }  
-        \]  
-    }  
-    }  
+    {
+    "$schema": "https://github.com/Azure/data-api-builder/releases/download/v1.7.90/dab.draft.schema.json",
+    "data-source": {
+        "database-type": "mssql",
+        "connection-string": "Server=<Public IP Address>,1433;Database=SmartInventoryDB;User ID=sqlvmuser;Password=AZvmsql12345;TrustServerCertificate=True;",
+        "options": {
+        "set-session-context": false
+        }
+    },
+    "runtime": {
+        "rest": {
+        "enabled": true,
+        "path": "/api",
+        "request-body-strict": true
+        },
+        "graphql": {
+        "enabled": true,
+        "path": "/graphql",
+        "allow-introspection": true
+        },
+        "mcp": {
+        "enabled": true,
+        "path": "/mcp"
+        },
+        "host": {
+        "cors": {
+            "origins": [],
+            "allow-credentials": false
+        },
+        "authentication": {
+            "provider": "StaticWebApps"
+        },
+        "mode": "development"
+        }
+    },
+    "entities": {
+    "Products": {
+        "source": "core.Products",
+        "permissions": [
+        {
+            "role": "anonymous",
+            "actions": ["read"]
+        }
+        ]
+    }
+    }
     }
     ```
 
@@ -723,16 +717,16 @@ Allow external applications to access database.
     http://localhost:5000/graphql
     ```
 
-    The **Nitro page** you are seeing is actually the **GraphQL Playground
+1. The **Nitro page** you are seeing is actually the **GraphQL Playground
     interface** provided by Data API Builder. You can think of it like
     SSMS for SQL or Postman for APIs.
 
-    Click on **Browse Schema** on the Homepage and Navigate to **Operation** tab.
+1. Click on **Browse Schema** on the Homepage and Navigate to **Operation** tab.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image70.png)
 
-22. Inside the **Nitro** interface, in the left panel – write the below
+2. Inside the **Nitro** interface, in the left panel – write the below
     query and click on **Run**.
 
     ```
@@ -772,7 +766,7 @@ Allow external applications to access database.
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image72.png)
 
-## **Conclusion​**
+## Conclusion
 
 In this lab, you successfully designed and developed a modern inventory
 management database using SmartInventoryDB. You leveraged AI-powered

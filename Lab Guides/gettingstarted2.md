@@ -1,4 +1,4 @@
-# Day 02 : SQL AI Developer
+# Day 02 : Implement AI Solutions with Azure SQL Database and SQL Server 2025
 
 ### Overall Estimated Duration: 4 Hours
 
