@@ -1,4 +1,4 @@
-# **Lab 4: Building a Secure Inventory System with SQL Server 2025, GitHub Copilot, and Data APIs​**
+# Lab 4: Building a Secure Inventory System with SQL Server 2025, GitHub Copilot, and Data APIs​
 
 In today’s retail and warehouse environments, businesses need fast,
 secure, and intelligent ways to manage inventory data. In this hands-on
@@ -11,7 +11,7 @@ REST and GraphQL APIs for application integration. This lab demonstrates
 how modern SQL development goes beyond writing queries — it integrates
 AI, security, and API-driven architecture.
 
-**Objectives**
+## Objectives**
 
 By completing this lab, participants will be able to:
 
@@ -25,7 +25,8 @@ By completing this lab, participants will be able to:
 
 - Apply Dynamic Data Masking and permission controls
 
-- Expose database tables as REST and GraphQL APIs using **Azure Data API Builder**
+- Expose database tables as REST and GraphQL APIs using **Azure Data API
+  Builder**
 
 ## **Exercise 1: Connect SQL Server 2025 on VS Code**
 
@@ -63,16 +64,9 @@ By completing this lab, participants will be able to:
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image5.png)
 
 7.  Select **Authentication** type as **SQL Login** and enter the
-    **username** and **password** for SQL authentication.
+    **username** as +++sqlvmuser+++ and **password** as +++AZvmsql12345+++ that you have created in the VM in Lab 1.
 
-	- Enter admin details as below:
-
-	- Username : +++sqlvmuser+++
-
-	- Password: +++AZvmsql12345+++
-
-8.  Initially, you can enter the database name as +++master+++. Click on
-    **Connect**.
+8.  Initially, you can enter the database name as +++master+++. Click on **Connect**.
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image6.png)
 
@@ -121,19 +115,20 @@ By completing this lab, participants will be able to:
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image12.png)
 
-5.  Enter the below query. This will create a **schema** as **core**
+5.  Enter the below query. This will create a **schema** as ‘**core’**
     and a **table** as ‘**Products’** with some columns:
 
     ```
     CREATE SCHEMA core;
     GO
+
     CREATE TABLE core.Products (
-	    ProductID INT PRIMARY KEY IDENTITY(1,1),
-	    ProductName NVARCHAR(100),
-	    Category NVARCHAR(50),
-	    Price DECIMAL(10,2),
-	    StockQuantity INT,
-	    CreatedDate DATETIME DEFAULT GETDATE()
+        ProductID INT PRIMARY KEY IDENTITY(1,1),
+        ProductName NVARCHAR(100),
+        Category NVARCHAR(50),
+        Price DECIMAL(10,2),
+        StockQuantity INT,
+        CreatedDate DATETIME DEFAULT GETDATE()
     );
     ```
 
@@ -154,9 +149,8 @@ By completing this lab, participants will be able to:
     rows affected as the output:  
       
     ```
-    INSERT INTO core.Products (ProductName, Category, Price,
-    StockQuantity)
-    VALUES
+    INSERT INTO core.Products (ProductName, Category, Price, StockQuantity)
+    VALUES 
     ('Laptop', 'Electronics', 75000, 5),
     ('Mouse', 'Electronics', 500, 50),
     ('Office Chair', 'Furniture', 8000, 8);
@@ -217,25 +211,23 @@ Generate queries using natural language and improve productivity.
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image22.png)
 
-	>[!Alert] Make sure **Agent** mode is selected and you can
+15. **Important:** Make sure **Agent** mode is selected and you can
     select the model as per your requirements.
 
 16. Enter the **prompt** to create a stored procedure under the
     SmartInventoryDB:
 
     ```
-    We are using SQL Server 2025.  
-    Database: SmartInventoryDB  
-    Table: core.Products  
-    Columns: ProductID (INT, Primary Key), ProductName (NVARCHAR), Price
-    (DECIMAL), StockQuantity (INT)
-
+    We are using SQL Server 2025.
+    Database: SmartInventoryDB
+    Table: core.Products
+    Columns: ProductID (INT, Primary Key), ProductName (NVARCHAR), Price (DECIMAL), StockQuantity (INT)
     Write a stored procedure named core.RestockProduct that:
-    - Accepts @ProductID INT
-    - Accepts @QuantityToAdd INT
-    - Increases StockQuantity by @QuantityToAdd
-    - Returns a message if product does not exist
-    - Prevents negative quantity 
+    •	Accepts @ProductID INT
+    •	Accepts @QuantityToAdd INT
+    •	Increases StockQuantity by @QuantityToAdd
+    •	Returns a message if product does not exist
+    •	Prevents negative quantity input
     ```
 
     ![A screenshot of a computer Description automatically
@@ -261,7 +253,7 @@ Generate queries using natural language and improve productivity.
 
 ### **Task 5: Verify the Stored Procedure**
 
-**Verify Existing Product Data**
+**Verify Existing Product Data:**
 
 20. Open a **new query** editor for the **SmartInventoryDB**.
 
@@ -272,23 +264,23 @@ Generate queries using natural language and improve productivity.
 
     ```
     SELECT ProductID, ProductName, StockQuantity
-    FROM core.Products
+    FROM Products
     WHERE ProductID = 1;
     ```
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image28.png)
 
-22. The output shows the **current StockQuantity** as **5**.
+22. The output shows the current StockQuantity as 5.
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image29.png)
 
-	**Execute the Stored Procedure:** Now, we will restock the product.
+    **Execute the Stored Procedure:** Now, we will restock the product.
 
 23. Execute the stored procedure with the below given query.
 
     ```
-    EXEC core.RestockProduct
+    EXEC RestockProduct 
     @ProductID = 1,
     @QuantityToAdd = 10;
     ```
@@ -306,7 +298,7 @@ Generate queries using natural language and improve productivity.
 
     ```
     SELECT ProductID, ProductName, StockQuantity
-    FROM core.Products
+    FROM Products
     WHERE ProductID = 1;
     ```
 
@@ -319,7 +311,7 @@ Generate queries using natural language and improve productivity.
 
 ## **Exercise 3: Security & Governance with SQL Server 2025​**
 
-Goal: Apply role-based access and masking
+Goal - Apply role-based access and masking
 
 ### **Task 1: Assign a Role and add a user in the database**
 
@@ -360,7 +352,7 @@ Goal: Apply role-based access and masking
     first.
 
     ```
-    CREATE USER InventoryUser
+    CREATE USER InventoryUser 
     FOR LOGIN InventoryUser;
     ```
 
@@ -385,9 +377,8 @@ Goal: Apply role-based access and masking
 
     ```
     SELECT ProductID, ProductName, StockQuantity
-    FROM core.Products;
+    FROM Products;
     ```
-
     Admin has the unrestricted access so you will be having full data visibility.
 
     ![A screenshot of a computer Description automatically
@@ -398,14 +389,15 @@ Goal: Apply role-based access and masking
     ```
     EXECUTE AS USER = 'InventoryUser';
     SELECT ProductID, ProductName, StockQuantity
-    FROM core.Products;
+    FROM Products;
     REVERT;
     ```
 
-	**What This Proves?**
+    **What This Proves?**
 
-	- InventoryUser can **SELECT** because of InventoryViewer role.
-	- If you did NOT grant UPDATE/DELETE — those operations should fail.
+    - InventoryUser can **SELECT** because of InventoryViewer role.
+
+    - If you did NOT grant UPDATE/DELETE — those operations should fail.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image38.png)
@@ -414,17 +406,17 @@ Goal: Apply role-based access and masking
 
     ```
     EXECUTE AS USER = 'InventoryUser';
-    UPDATE core.Products
+    UPDATE Products 
     SET StockQuantity = 100
     WHERE ProductID = 1;
     REVERT;
     ```
 
-	When executed, you’ll receive **Permission denied** error. Roles simplify
-	permission management. Instead of granting permissions to each user, we
-	grant them to a role and add user to that role.
+    When executed, you’ll receive ‘Permission denied’ error. Roles simplify
+    permission management. Instead of granting permissions to each user, we
+    grant them to a role and add user to that role.
 
-	**You have NOT granted UPDATE/DELETE, hence. this operation failed.**
+    **You have NOT granted UPDATE/DELETE, hence. this operation failed.**
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image39.png)
 
@@ -460,8 +452,8 @@ Goal: Apply role-based access and masking
     (InventoryUser)
 
     ```
-    EXECUTE AS USER = 'InventoryUser';
-    SELECT ProductName, Price
+    EXECUTE AS USER = InventoryUser;
+    SELECT ProductName, Price 
     FROM core.Products;
     REVERT;
     ```
@@ -484,8 +476,8 @@ Goal: Apply role-based access and masking
     concept.
 
     ```
-    EXECUTE AS USER = 'InventoryUser';
-    SELECT ProductName, Price
+    EXECUTE AS USER = InventoryUser;
+    SELECT ProductName, Price 
     FROM core.Products;
     REVERT;
     ```
@@ -495,7 +487,7 @@ Goal: Apply role-based access and masking
 
 ## **Exercise 4: Exposing SQL Data to AI Applications using Data API Builder​**
 
->[!Note] Allow external applications to access database.
+Allow external applications to access database.
 
 1.  Open a **New terminal** in VS Code.
 
@@ -504,7 +496,9 @@ Goal: Apply role-based access and masking
 
 2.  Install **Data API Builder** with the help of this command:
 
-    +++dotnet tool install --global Microsoft.DataApiBuilder+++
+    ```
+    dotnet tool install --global Microsoft.DataApiBuilder
+    ```
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image46.png)
@@ -512,7 +506,7 @@ Goal: Apply role-based access and masking
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image47.png)
 
-3.  Navigate to **File Explorer** and create **a new folder** on the Desktop.
+3.  Navigate to **File Explorer** and create **a new folder**.
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image48.png)
@@ -535,8 +529,11 @@ Goal: Apply role-based access and masking
 
 7.  Once you have opened the folder, check the connection as it might
     get disconnected. If you see a red dot, this means it is
-    disconnected. To **connect** again, click on the **Connection Dialogue Box**, Look on the right side for **Saved connections**, select the lone saved connection to the Master DB and enter
-    the password +++AZvmsql12345+++ and press **connect**.
+    disconnected. 
+    
+    To **connect** again, click on the Server and enter
+    the password as +++AZvmsql12345+++ that you have mentioned in the VM for the Server and
+    press **Enter**.
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image52.png)
 
@@ -554,31 +551,31 @@ Goal: Apply role-based access and masking
     **initializes a new Data API Builder project configuration** for a
     Microsoft SQL Server database.
 
-    +++dab init --database-type mssql+++
+    ```
+    dab init --database-type mssql
+    ```
 
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image55.png)
-
-    +++dab –-version+++
-
-    ![A screenshot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image56.png)
 
 11. You will notice that under SQLDB folder, a new **dab-config.json**
     file is created.
 
     ![A screenshot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image58.png)
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image56.png)
 
 12. Open the file and find the **Connection String**. Within the double
-    quotes, enter this connection string:
+    quotes, enter this connection string and replace Public IP address in the Server and make sure UserID and password are correct. 
 
-    +++Server=<SQL_SERVER>;Database=SmartInventoryDB;User ID=sqlvmuser;Password=AZvmsql12345;TrustServerCertificate=True;+++
+    ```
+    Server=<Public IP Address>,1433;Database=SmartInventoryDB;User
+    ID=sqlvmuser;Password=AZvmsql12345;TrustServerCertificate=True;
+    ```
 
     ![A screenshot of a computer program Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image59.png)
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image57.png)
 
-    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image60.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image58.png)
 
 13. Edit the dab-config.json file. Replace the last empty ‘**entities’**
     with the below json.
@@ -598,74 +595,144 @@ Goal: Apply role-based access and masking
     ```
 
     ![A screenshot of a computer program Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image61.png)
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image59.png)
 
     ![A screenshot of a computer program Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image62.png)
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image60.png)
 
-14. Now, **start the Data Api Builder.** The command dab start launches
+14. Make sure to change the **authentication provider** as “**StaticWebApps**”
+
+    ![A screenshot of a computer program Description automatically
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image61.png)
+
+15. Make sure your dab-config.json file looks like this:
+
+    ```
+    {  
+      "$schema":
+    "<https://github.com/Azure/data-api-builder/releases/download/v1.7.90/dab.draft.schema.json%22>,  
+      "data-source": {  
+        "database-type": "mssql",  
+        "connection-string":
+    "Server=20.106.17.61,1433;Database=SmartInventoryDB;User
+    ID=sqlvmuser;Password=AZvmsql12345;TrustServerCertificate=True;",  
+        "options": {  
+          "set-session-context": false  
+        }  
+      },  
+      "runtime": {  
+        "rest": {  
+          "enabled": true,  
+          "path": "/api",  
+          "request-body-strict": true  
+        },  
+        "graphql": {  
+          "enabled": true,  
+          "path": "/graphql",  
+          "allow-introspection": true  
+        },  
+        "mcp": {  
+          "enabled": true,  
+          "path": "/mcp"  
+        },  
+        "host": {  
+          "cors": {  
+            "origins": \[\],  
+            "allow-credentials": false  
+          },  
+          "authentication": {  
+            "provider": "StaticWebApps"  
+          },  
+          "mode": "development"  
+        }  
+      },  
+      "entities": {  
+    "Products": {  
+        "source": "core.Products",  
+        "permissions": \[  
+        {  
+            "role": "anonymous",  
+            "actions": \["read"\]  
+        }  
+        \]  
+    }  
+    }  
+    }
+    ```
+
+16. Now, **start the Data Api Builder.** The command dab start launches
     **Data API Builder** by reading your configuration file
     (dab-config.json) and starting the REST and GraphQL endpoints that
     expose your database as APIs through Dapr.
 
-    +++dab start+++
+    ```
+    dab start
+    ```
 
-    **Note**: Make sure you don’t close this terminal. You can expand or
+    >[!Note] Make sure you don’t close this terminal. You can expand or
     collapse if needed.
 
     ![A screenshot of a computer program Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image63.png)
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image62.png)
 
-    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image64.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image63.png)
 
-15. Open your browser and navigate to this url. You should see JSON
+17. Open your browser and navigate to this url. You should see JSON
     output. This means that now SQL is exposed as REST API.
 
-    +++http://localhost:5000/api/Products+++
+    ```
+    http://localhost:5000/api/Products
+    ```
 
     ![A screen shot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image65.png)
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image64.png)
 
-16. Now, it’s time to test GraphQL. Navigate to VS Code. Find the
+18. Now, it’s time to test GraphQL. Navigate to VS Code. Find the
     graphql mode as **production**. You need to update it as
-    +++development+++. When DAB runs in **production mode**, it disables
+    **development**. When DAB runs in **production mode**, it disables
     the GraphQL UI (Playground).
+
+    ![A screenshot of a computer program Description automatically
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image65.png)
 
     ![A screenshot of a computer program Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image66.png)
 
-    ![A screenshot of a computer program Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image67.png)
-
-17. Expand the terminal if it is collapsed and press **Ctrl + C** to
+19. Expand the terminal if it is collapsed and press **Ctrl + C** to
     shutdown the dab that you have started using dab start command.
 
     Once you press Ctrl+C, you will see that application is shutting down.
 
-    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image68.png)
+    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image67.png)
 
-18. Again, start the Data Api Builder:
+20. Again, start the Data Api Builder:
 
-    +++dab start+++
+    ```
+    dab start
+    ```
 
     ![A screenshot of a computer program Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image69.png)
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image68.png)
 
     ![A screen shot of a computer program Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image70.png)
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image69.png)
 
-19. Navigate to your browser and enter the graphql url:
+21. Navigate to your browser and enter the graphql url:
 
-    +++http://localhost:5000/graphql+++
+    ```
+    http://localhost:5000/graphql
+    ```
 
     The **Nitro page** you are seeing is actually the **GraphQL Playground
     interface** provided by Data API Builder. You can think of it like
     SSMS for SQL or Postman for APIs.
 
-    ![A screenshot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image71.png)
+    Click on **Browse Schema** on the Homepage and Navigate to **Operation** tab.
 
-20. Inside the **Nitro** interface, in the left panel – write the below
+    ![A screenshot of a computer Description automatically
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image70.png)
+
+22. Inside the **Nitro** interface, in the left panel – write the below
     query and click on **Run**.
 
     ```
@@ -683,7 +750,7 @@ Goal: Apply role-based access and masking
     }
     ```
 
-    **Note:** If you remember, we have specified the table name as
+    >[!Note] If you remember, we have specified the table name as
     ‘Products’- means with capital P and here, in the query we are writing
     it as ‘products’. The reason is that DAB automatically generates GraphQL
     entities in lowercase (unless explicitly configured).
@@ -693,17 +760,17 @@ Goal: Apply role-based access and masking
     Your GraphQL entity is: **products**
 
     ![A screenshot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image72.png)
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image71.png)
 
-21. You should see results on the right side. If your table has data, it
+23. You should see results on the right side. If your table has data, it
     will return the rows. When you run that query, GraphQL translates
     your query into a SQL query automatically.
 
     You will see the Products table data from the database including all
-    the electronic products – Laptop, Office Chair, Mouse....
+    the electronic products – Laptop, Office Chair, Mouse…
 
     ![A screenshot of a computer Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image73.png)
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image72.png)
 
 ## **Conclusion​**
 
@@ -716,10 +783,3 @@ end of this exercise, you not only created a functional inventory system
 but also experienced how modern SQL development combines database
 design, AI assistance, governance, and API integration to build
 scalable, secure, and application-ready data solutions.
-
-
-
-
-
-
-
