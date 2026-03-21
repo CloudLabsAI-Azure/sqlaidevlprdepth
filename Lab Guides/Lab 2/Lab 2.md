@@ -239,11 +239,11 @@ By completing this lab, you will be able to:
 
 2.  Enter the details below and click **Review + Create**
 
-    - Resource Group: **AIdeveloper*
+    - Resource Group: **AIDeveloper**
 
-    - Name: **azsearchrag@lab.labinstance.id**
+    - Name: **azsearchrag<inject key="DeploymentID" enableCopy="false"/>**
 
-    - Region: **@lab.CloudResourceGroup(ResourceGroup1).Location**
+    - Region: **Region of your Resource Group**
 
     - Pricing tier: **Standard**.
 
@@ -276,11 +276,11 @@ By completing this lab, you will be able to:
 
 4.  Enter below details and click **Next**.
 
-    - Subscription: **@lab.CloudSubscription.Name**
+    - Subscription: **Default Subscription**
 
     - Azure SQL account type: **SQL database**
 
-    - Server: **azdbsqlserver@lab.labinstance.id**
+    - Server: **azdbsqlserver<inject key="DeploymentID" enableCopy="false"/>**
 
     - Database: **ContosoMedicalResearch**
 
@@ -302,9 +302,9 @@ By completing this lab, you will be able to:
 
     - Kind: Azure OpenAI
 
-    - Subscription: **@lab.CloudSubscription.Name**
+    - Subscription: **Default Subscription**
 
-    - Azure OpenAI Service: **azsqlaoai@lab.labinstance.id-lab2**
+    - Azure OpenAI Service: **azsqlaoai<inject key="DeploymentID" enableCopy="false"/>**
 
     - Model deployment : text-embedding-3-small
 
@@ -363,11 +363,11 @@ By completing this lab, you will be able to:
 
 5.  Enter the details below and click Create.
 
-    - Project Name: **Foundryproj-@lab.labinstance.id-lab2**
+    - Project Name: **Foundryproj-<inject key="DeploymentID" enableCopy="false"/>**
 
     - Region: **East US 2**
 
-    - Resource group: Resourcegroup1
+    - Resource group: **AIDeveloper**
 
     ![](./media/image80.png)
 
