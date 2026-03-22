@@ -30,15 +30,15 @@ By completing this lab, you will be able to:
 ## Exercise 1: Create SQL Database Server 
 
     
-1.  In the Azure portal, type **Azure SQL** into the search bar and select it from the results.
+1. In the Azure portal, type **Azure SQL** into the search bar and select it from the results.
 
     ![](./media/image1.png)
 
-3.  Expand **Azure SQL Database | SQL logical servers** from the left menu and select **Create.**
+3. Expand **Azure SQL Database | SQL logical servers** from the left menu and select **Create.**
 
     ![](./media/image2.png)
 
-4.  Enter the values below and click on **Next: Networking**
+4. Enter the values below and click on **Next: Networking**
 
     - Subscription : **Default Subscription**
 
@@ -58,25 +58,25 @@ By completing this lab, you will be able to:
 
     ![](./media/image4.png)
 
-5.  Toggle **Yes** to Allow Azure services and resources to access this
+5. Toggle **Yes** to Allow Azure services and resources to access this
     server, and then click on **Next: Security.**
 
     ![](./media/image5.png)
 
-6.  Click on the **Configure identities** link under the Identity
+6. Click on the **Configure identities** link under the Identity
     section.
 
     ![](./media/image6.png)
 
-7.  Select **Status On** and click on Apply.
+7. Select **Status On** and click on Apply.
 
     ![](./media/image7.png)
 
-8.  Click on **Review +create.**
+8. Click on **Review +create.**
 
     ![](./media/image8.png)
 
-9.  Review the details and click on **Create.**
+9. Review the details and click on **Create.**
 
     ![](./media/image9.png)
 
@@ -98,15 +98,15 @@ By completing this lab, you will be able to:
 
 ## Exercise 2: Create an Azure SQL Database
 
-1.  Enter **Azure SQL** in the search bar and select **Azure SQL database.**
+1. Enter **Azure SQL** in the search bar and select **Azure SQL database.**
 
     ![](./media/image14.png)
 
-2.  Select **Create -\> SQL database.**
+2. Select **Create -\> SQL database.**
 
     ![](./media/image15.png)
 
-3.  Select the following values, keep all other settings as default, and then click **Next: Networking >**:
+3. Select the following values, keep all other settings as default, and then click **Next: Networking >**:
 
     - Name: **ContosoMedicalResearch**
 
@@ -130,7 +130,7 @@ By completing this lab, you will be able to:
 
 1. From the LabVM, search for **SQL Server Management Studio 22** and open it.
 
-4.  Enter below details and click **Continue**:
+4. Enter below details and click **Continue**:
 
     - Server name: **The Server name you copied previously**
 
@@ -146,7 +146,7 @@ By completing this lab, you will be able to:
 
         ![](./media/image27.png)
 
-5.  Select the Copilot icon in the top right, Prompt Copilot to create a database:
+5. Select the Copilot icon in the top right, Prompt Copilot to create a database:
 
     ```
 	@workspace, generate a SQL Server script to create a database named ContosoMedicalResearch only if it does not already exist. Use IF NOT EXISTS with sys.databases and wrap the CREATE DATABASE statement inside a BEGIN...END block. Keep default settings. 
@@ -162,14 +162,14 @@ By completing this lab, you will be able to:
 
     ![](./media/image30.png)
 
-9.  Right-click **DB → Tasks → Import Flat File** as shown in the image below.
+9. Right-click **DB → Tasks → Import Flat File** as shown in the image below.
 
     ![](./media/image31.png)
 
-10.  Click Next on Import flat file page,
+10. Click Next on Import flat file page,
     ![](./media/image32.png)
 
-11.  Browse the file library_books.csv form C:\Labfiles folder, enter the table name as **MedicalResearch** and click **Next**.
+11. Browse the file *clinical_reports.csv* form `C:\Labfiles` folder, enter the table name as **MedicalResearch** and click **Next**.
     ![](./media/image33.png)
 
 11. Preview the data and click Next.
@@ -203,13 +203,18 @@ By completing this lab, you will be able to:
 
 ## Exercise 4: Create Azure OpenAI service and deploy chat and embedding models
 
-1.  Switch back to Azure and search for **Azure OpenAI** and select it.
+1. Switch back to Azure and search for **Azure OpenAI** and select it.
 
     ![](./media/image39.png)
 
 1. Navigate to azsqlaoai<inject key="DeploymentID" enableCopy="false"/> and click on **Go to Foundry portal**
 
     ![](./media/image39a.png)
+
+1. Click on Deployments under Shared resource from left navigation
+    menu. Select Deploy model-\> Deploy base model.
+
+    ![](./media/image30-2.png)
 
 15. Search for **gpt** models and select the **gpt-5.2-chat** model, and
     click Confirm.
@@ -228,16 +233,16 @@ By completing this lab, you will be able to:
 
 ## Exercise 5: Create Azure AI Search Service
 
-1.  Switch back to the Azure portal tab. Enter **AI search** in the
+1. Switch back to the Azure portal tab. Enter **AI search** in the
     search bar and select AI Search.
 
     ![](./media/image58.png)
 
-1.  Click on Create.
+1. Click on Create.
 
     ![](./media/image59.png)
 
-2.  Enter the details below and click **Review + Create**
+2. Enter the details below and click **Review + Create**
 
     - Resource Group: **AIDeveloper**
 
@@ -250,11 +255,11 @@ By completing this lab, you will be able to:
     ![A screenshot of a computer Description automatically
     generated](./media/image60.png)
 
-1.  Review the details and click on Create.
+1. Review the details and click on Create.
 
     ![](./media/image61.png)
 
-2.  Wait for the deployment to complete and click on **Go to resource**.
+2. Wait for the deployment to complete and click on **Go to resource**.
 
     ![](./media/image62.png)
 
@@ -262,19 +267,19 @@ By completing this lab, you will be able to:
 
 ## Exercise 6: Create Search Index
 
-1.  Switch back to the AI Service tab and click on **Import data(new)**
+1. Switch back to the AI Service tab and click on **Import data**
 
     ![](./media/image64.png)
 
-2.  Select the **Azure SQL Database** tile.
+2. Select the **Azure SQL Database** tile.
 
     ![](./media/image65.png)
 
-3.  Select the **RAG** scenario.
+3. Select the **RAG** scenario.
 
     ![](./media/image66.png)
 
-4.  Enter below details and click **Next**.
+4. Enter below details and click **Next**.
 
     - Subscription: **Default Subscription**
 
@@ -294,9 +299,7 @@ By completing this lab, you will be able to:
 
     ![](./media/image67.png)
 
-    ![](./media/image68.png)
-
-5.  In Vectorise your text, enter the details below and click Next.
+5. In Vectorise your text, enter the details below and click Next.
 
     - Column to vectorise: **Summary**
 
@@ -314,29 +317,28 @@ By completing this lab, you will be able to:
 
     ![](./media/image69.png)
 
-    ![](./media/image70.png)
-
-6.  Keep all default values and click Next.
+6. Keep all default values and click Next.
 
 	![](./media/image71.png)
 
-7.  Review the details and click Create.
+7. Review the details and click Create.
 
 	![](./media/image72.png)
 
-8.  Click **Go to Search Explorer**.
+8. Click **Go to Search Explorer**.
 
 	![](./media/image73.png)
 
-9.  Enter the prompts, check vectors and embeddings and verify vectors
-    and score differences.
-
-    **Recent advances in oncology treatment**
-
-    **Immunotherapy in lung cancer**
-
-    **AI diagnostics in cardiology**
-
+9. Enter the prompts, check vectors and embeddings and verify vectors and score differences.
+    ```
+    Recent advances in oncology treatment
+    ```
+    ```
+    Immunotherapy in lung cancer
+    ```
+    ```
+    AI diagnostics in cardiology
+    ```
     ![](./media/image74.png)
 
     ![](./media/image75.png)
@@ -345,23 +347,23 @@ By completing this lab, you will be able to:
 
 ## Exercise 7: Build RAG in Azure AI Foundry
 
-1.  Open a new tab and go to **https://ai.azure.com** and sign in with
+1. Open a new tab and go to **https://ai.azure.com** and sign in with
     your Azure subscription account.
 
-2.  Click on Start building to navigate to the new Microsoft Foundry
+2. Click on Start building to navigate to the new Microsoft Foundry
     portal.
 
     ![](./media/image77.png)
 
-3.  **Click on Drop down and select Create a new project.**
+3. **Click on Drop down and select Create a new project.**
 
     ![](./media/image78.png)
 
-4.  Expand Advanced options.
+4. Expand Advanced options.
 
     ![](./media/image79.png)
 
-5.  Enter the details below and click Create.
+5. Enter the details below and click Create.
 
     - Project Name: **Foundryproj-<inject key="DeploymentID" enableCopy="false"/>**
 
@@ -371,20 +373,43 @@ By completing this lab, you will be able to:
 
     ![](./media/image80.png)
 
-6.  From the top navigation menu, select **Discover.**
+    > Note: Click on **"X"** when it says *Welcome to new Microsoft Foundry*.
+        ![](./media/image80a.png)
+
+1. Navigate back to Azure portal and search for Microsoft Foundry and select the **Foundry-<inject key="Deployment ID" enableCopy="false"></inject>** project.
+
+      ![](./media/1.12.1.png)  
+
+1. Select **Access control (IAM) (1)** from the left navigation pane, click on **+ Add (2)**, and select **Add role assignment (3)** to assign permissions.
+     
+     ![](./media/1.24.png)
+
+1. On the **Add role assignment** page, search for **Azure AI Owner (1)**, select the **Azure AI Owner** role **(2)**, and click **Next (3)** to continue.
+
+     ![](./media/1.25.png)
+
+1. In Members section, choose **User, group, or service principal (1)**, click **+ Select members (2)**, search for the **<inject key="AzureAdUserEmail" enableCopy="true"/> (3)**, select the user from the list **(4)**, and click **Select (5)** to add the member.
+
+     ![](./media/1.26.png)
+
+1. Verify the selected **Azure AI Owner** role and added member, then click **Review + assign** to complete the role assignment.
+
+     ![](./media/1.27.png)   
+
+6. Navigate back to **Microsoft Foundry** page and from the top navigation menu, select **Discover**
 
     ![](./media/image81.png)
 
-7.  Click on **Models** from left navigation menu, search for
+7. Click on **Models** from left navigation menu, search for
     **gpt-5.2-chat** and select it.
 
     ![](./media/image82.png)
 
-8.  Select **Deploy -\> Default settings**.
+8. Select **Deploy -\> Default settings**.
 
     ![](./media/image83.png)
 
-9.  Click on Knowledge from the left navigation menu.
+9. Click on Knowledge from the left navigation menu.
 
     ![](./media/image84.png)
 
@@ -405,16 +430,11 @@ By completing this lab, you will be able to:
 
     ![](./media/image88.png)
 
-14. Select the **model** drop-down and browse more models.
-
-    ![](./media/image89.png)
-
-15. Select the gpt-4.1 model as gpt-5.2 is unavailable, and then **Save
-    knowledge base.**
+15. Select the **gpt-4.1** model, and then **Save knowledge base.**
 
     ![](./media/image90.png)
 
-16. Click on Save now.
+16. Click on **Save now**.
 
     ![](./media/image91.png)
 
@@ -424,16 +444,15 @@ By completing this lab, you will be able to:
 
     ![](./media/image93.png)
 
-18. Click on Create agent.
+18. Click on **Create agent**.
 
     ![](./media/image94.png)
 
-19. Enter the unique agent name and click Create.
+19. Enter the unique agent name and click **Create**.
 
     ![](./media/image95.png)
 
-20. On Playground, expand Knowledge-\> Add and select Connect to Foundry
-    IQ.
+20. On Playground, expand Knowledge-\> Add and select Connect to Foundry IQ.
 
     ![](./media/image96.png)
 
@@ -467,27 +486,32 @@ By completing this lab, you will be able to:
 
     ![](./media/image98.png)
 
-23. Expand Tools and select Add.
+23. Expand Tools and select Add and **Browse all tools**.
 
     ![](./media/image99.png)
 
-24.  Select Azure AI Search and click on Add tool.
+24. Select Azure AI Search and click on Add tool.
 
      ![](./media/image100.png)
 
-25.  Select the Azure search connection and index, and then click on Add.
+25. Select the Azure search connection and index, and then click on Add.
 
      ![](./media/image101.png)
 
-26.  Select your Azure Search tool and click on Save.
+26. Select your Azure Search tool and click on Save.
 
      ![](./media/image102.png)
 
 27. Enter the prompts below and check the response
 
-    Ask: **What are recent advancements in cancer treatment?**
-
-    **List books and their authors related to AI in radiology diagnostics**
+    Ask: 
+    ```
+    What are recent advancements in cancer treatment?
+    ```
+    
+    ```
+    List books and their authors related to AI in radiology diagnostics
+    ```
 
     ![](./media/image103.png)
 
@@ -501,8 +525,10 @@ By completing this lab, you will be able to:
     ![](./media/image105.png)
 
 15. Enter the prompt:
-
+    
+    ```
     List books and their authors related to AI in radiology diagnostics
+    ```
 
     ![](./media/image106.png)
 

@@ -119,6 +119,9 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 1. From the LabVM, search for **SQL Server Management Studio 22** and open it.
 
     ![](./media/image18b.png)
+    > Note: If you see a SignIn page, click on **Skip and add accounts later**
+        ![](./media/image18c.png)
+
 
 1.  Connect using SSMS:
 
@@ -152,7 +155,7 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 
     Resource Group: **AIDeveloper**
 
-    Region: **Region of your Resource Group**
+    Region: **East US 2**
 
     Name: **azsqlaoai<inject key="DeploymentID" enableCopy="false"/>**
 
