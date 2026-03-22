@@ -54,7 +54,7 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 
     - **Size** - Select **all sizes** and search for **E4ds_v5**
 	
-		>[!Note] This is one of the minimum recommended VM sizes for SQL Server on Azure VMs. be sure to clean up your resources once you're done with them to prevent any unexpected charges.
+		> Note: This is one of the minimum recommended VM sizes for SQL Server on Azure VMs. be sure to clean up your resources once you're done with them to prevent any unexpected charges.
 
     - Enter admin details as below:
 
@@ -66,7 +66,6 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
     then select **RDP (3389)** from the dropdown list.
 
     ![](./media/image4.png)
-
 
     ![](./media/image6.png)
 
@@ -115,8 +114,7 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 
 ### Exercise 2: Setup SQL Server 2025 environment 
 
->[!Note] You have SQL Server 2025 running and can connect with SSMS or
-VS Code.
+> Note: You have SQL Server 2025 running and can connect with SSMS or VS Code.
 
 1. From the LabVM, search for **SQL Server Management Studio 22** and open it.
 
@@ -217,7 +215,7 @@ VS Code.
 
 2.  Enter the database name as **ContosoHospitalDB** and click OK.
 
-    >[!Note] Another way to create the DB is by running the command: **CREATE DATABASE ContosoHospitalDB;**
+    > Note: Another way to create the DB is by running the command: **CREATE DATABASE ContosoHospitalDB;**
 
     ![](./media/image36.png)
 
