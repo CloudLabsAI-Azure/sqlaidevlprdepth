@@ -169,7 +169,7 @@ By completing this lab, you will be able to:
 10. Click Next on Import flat file page,
     ![](./media/image32.png)
 
-11. Browse the file *clinical_reports.csv* form `C:\Labfiles` folder, enter the table name as **MedicalResearch** and click **Next**.
+11. Browse the file *library_books.csv* form `C:\Labfiles` folder, enter the table name as **MedicalResearch** and click **Next**.
     ![](./media/image33.png)
 
 11. Preview the data and click Next.
