@@ -81,7 +81,7 @@ By the end of this lab, participants will be able to:
 
     ![](./media/new5.png)
 
-1. In the **Select a VM size** window, search for **E4ds_v5 (1)**, expand **E-Series v5 (2)**, select **E4ds_v5 (3)**, and then click **Select ()4**.
+1. In the **Select a VM size** window, search for **E4ds_v5 (1)**, expand **E-Series v5 (2)**, select **E4ds_v5 (3)**, and then click **Select (4)**.
 
     ![](./media/new6.png)
 
@@ -130,6 +130,10 @@ By the end of this lab, participants will be able to:
     ![](./media/new15.png)
 
 ## Exercise 2: Create Azure OpenAI resource and deploy embedding models
+
+1. In the Azure portal, type **Azure OpenAI (1)** in the top search bar and select **Azure OpenAI (2)** from the Services list.
+
+    ![](./media/latest3.png)
 
 1. In the **Azure OpenAI** page, click **+ Create (1)** and select **Azure OpenAI (2)** from the dropdown to create a new Azure OpenAI resource, which will be used to deploy models and generate embeddings in the lab.
 
@@ -189,9 +193,13 @@ By the end of this lab, participants will be able to:
 
 ## Exercise 3: Create Storage account and Store the file
 
-1. In the Azure portal, type **Storage accounts** in the search bar and select **Storage accounts** from the Services list to create and manage storage resources for the lab.
+1. In the Azure portal, type **Storage accounts (1)** in the search bar and select **Storage accounts (2)** from the Services list to create and manage storage resources for the lab.
 
     ![](./media/new27.png)
+
+1. Click **+ Create** to initiate the creation of a new storage resource.   
+
+    ![](./media/latest4.png)
 
 1. On the **Basics** tab, provide the following details to create the storage account for storing lab data:
 
@@ -369,7 +377,7 @@ By the end of this lab, participants will be able to:
     CREATE EXTERNAL MODEL ClinicalEmbeddingModel 
     WITH ( 
         -- Full embeddings endpoint URL: host + deployment + path + api-version 
-        LOCATION   = 'https://azsqlaoai0216.openai.azure.com/openai/deployments/embeddings/embeddings?api-version=2024-02-15-preview', 
+        LOCATION   = '<Replace with text-embedding Target URI>', 
         API_FORMAT = 'Azure OpenAI', 
         MODEL_TYPE = EMBEDDINGS, 
         MODEL      = 'text-embedding-3-small', 
@@ -406,7 +414,7 @@ By the end of this lab, participants will be able to:
     CREATE EXTERNAL DATA SOURCE ClinicalReportsBlob
     WITH (
         TYPE = BLOB_STORAGE,
-        LOCATION = 'https://sa@lab.labInstance.ID.blob.core.windows.net/public',
+        LOCATION = 'https://<Replace with your storage account name>.blob.core.windows.net/public',
         CREDENTIAL = ClinicalReportsBlobCred
     );
     GO
@@ -655,16 +663,57 @@ speed up coding.
 3. Ask Copilot:
 
     ```
-    Generate stored procedure for semantic search on clinical reports using vector embeddings and Azure OpenAI.
+    - An EXTERNAL MODEL named ClinicalEmbeddingModel is already created.
+    - You MUST use the following syntax for embeddings: 
+    AI_GENERATE_EMBEDDINGS(input USE MODEL ClinicalEmbeddingModel)
+    - DO NOT use comma-based syntax like AI_GENERATE_EMBEDDINGS(input, 'model_name').
+    Assume the following tables exist:
+    Table: dbo.ClinicalReports
+    Columns:
+    - ReportID INT PRIMARY KEY
+    - PatientID INT
+    - ReportText NVARCHAR(MAX) 
+    
+    Table: dbo.ReportEmbeddings
+    Columns:
+    - ReportID INT PRIMARY KEY
+    - Embedding VECTOR(1536) 
+    
+    Task:
+    Generate a SQL stored procedure named dbo.SearchClinicalReportsSemantic that performs semantic search using vector similarity. 
+    
+    Requirements:
+    1. Accept input parameter: 
+    @query NVARCHAR(MAX)
+    2. Generate query embedding using: 
+    AI_GENERATE_EMBEDDINGS(@query USE MODEL ClinicalEmbeddingModel)
+    3. Perform similarity search using: 
+    VECTOR_DISTANCE('cosine', query_embedding, Embedding)
+    4. Join dbo.ReportEmbeddings with dbo.ClinicalReports using ReportID
+    5. Return TOP 5 most similar results with: 
+       - ReportID 
+       - PatientID 
+       - ReportText (or preview using LEFT) 
+       - SimilarityScore = (1 - cosine distance)
+    6. Order results by similarity (highest first)
+    7. Handle NULL embeddings safely
+    8. Use proper SQL Server 2025 syntax only (no unsupported syntax)
+    9. Include TRY-CATCH error handling
+    10. Add comments explaining each step 
+    
+    Output:
+    Only provide the final stored procedure. Do not include explanations. 
     ```
 
-    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%203/media/image73.png)
+    ![](./media/latest.png)
 
 4. Open a **New Query** and click **Apply** on the Copilot response, and then run the query.
 
-    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%203/media/image74.png)
+    ![](./media/latest1.png)
 
-    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%203/media/image75.png)
+5. Once Query is add click **Execute** to run the query.
+
+    ![](./media/latest2.png)
 
 
 ## Conclusion:

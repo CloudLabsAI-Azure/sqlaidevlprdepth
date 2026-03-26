@@ -20,203 +20,204 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 
 ## Exercise 1: Provision SQL Server on Azure VM
 	
-1.  In the Azure portal, type **Azure SQL** into the search bar and select it from the results.
+1. On your LabVM, click on the **Azure Portal** icon.
 
-    ![](./media/image1.png)
+    ![Image](../Lab%201/media/94.png)
 
-2.  In the Azure portal pane, search for **SQL Server**, select **SQL Server on Azure VMs**, and then click **+ Create**.
+1. On the **Sign in to Microsoft Azure** tab, you will see the login screen. Enter the following email/username, and click on **Next (2)**. 
 
-    ![](./media/image2.png)
+   - **Email/Username**: <inject key="AzureAdUserEmail"></inject> **(1)**
+   
+      ![Image](../Lab%201/media/95.png)
+     
+1. Now enter the following Temparory Access Pass and click on **Sign in (2)**.
+   
+   - **Temporaray Access Pass**: <inject key="AzureAdUserPassword"></inject> **(1)**
 
-3.  In the **Select an image offer** box, choose a SQL Server image **Free SQL Server License: SQL Server 2025 Enterprise Developer on Windows Server 2025**.
-    Select **Create virtual machine**.
+      ![Image](../Lab%201/media/96.png)
+     
+1. If you see the pop-up **Stay Signed in?**, select **No**.
 
-    ![](./media/image3.png)
+   ![Image](../Lab%201/media/97.png)
 
-4.  On the **Basics** tab, provide the following information and then
-    click **Next: Disk**
+1. In the Azure portal, type **Azure SQL (1)** in the top search bar and select **Azure SQL (2)** from the Services list.
 
-    - Subscription : **Default Subscription**
+    ![](../Lab%203/media/new0.png)
 
-    - Resource Group: **AIDeveloper**
+1. In the Azure portal, expand **SQL Server (1)**, select **SQL Server on Azure VMs (2)**, and then click **+ Create (3)** to create a new **SQL Server Virtual Machine (4)**.
 
-    - Virtual Machine Name: **azuresqlvm**
+    ![](../Lab%203/media/new1.png)
 
-    - Region: **Region of your Resource Group**
+1. In the **Select an image offer** dropdown **(1)**, choose **Free SQL Server License: SQL Server 2025 Enterprise Developer on Windows Server 2025 (2)**.
 
-    - **Availability options** – *Availability zone*.
+    ![](../Lab%203/media/new2.png)
 
-        1.  **Zone options** – Self-selected zone
+1. After selecting the image offer **(3)**, click **Create virtual machine (4)** to proceed with the deployment.
 
-        2.  **Availability zone** -Zone 1
+    ![](../Lab%203/media/new3.png)
 
-    - **Image** - **Free SQL Server License: SQL Server 2025 Enterprise Developer on Windows Server 2025**
+1. On the **Basics** tab, provide the following details to configure the virtual machine:
 
-    - **Size** - Select **all sizes** and search for **E4ds_v5**
-	
-		> Note: This is one of the minimum recommended VM sizes for SQL Server on Azure VMs. be sure to clean up your resources once you're done with them to prevent any unexpected charges.
+    - **Subscription**: Select the available Azure subscription **(1)**
+    - **Resource group**: Choose an existing resource group **AIDeveloper (2)**
+    - **Virtual machine name**: Enter a name **sqlvm-<inject key="Deployment ID" enableCopy="false"/> (3)**
+    - **Region**: Select **Central US (4)**
+    - **Availability options**: Select **Availability zone (5)**
+    - **Zone options**: Choose **Self-selected zone (6)**
+    - **Availability zone**: Select **Zone 1 (7)**
 
-    - Enter admin details as below:
+      ![](../Lab%203/media/new4.png)
 
-	    Username : **sqlvmuser**
+1. Set the **Security type** to **Standard (1)**, ensure the correct **SQL Server 2025 Enterprise Developer image (2)** is selected, and then click **See all sizes (3)** to choose an appropriate VM size.
 
-	    Password: **AZvmsql12345**
+    ![](../Lab%203/media/new5.png)
 
-    - Under **Inbound port rules**, choose **Allow selected ports**, and
-    then select **RDP (3389)** from the dropdown list.
+1. In the **Select a VM size** window, search for **E4ds_v5 (1)**, expand **E-Series v5 (2)**, select **E4ds_v5 (3)**, and then click **Select (4)**.
 
-    ![](./media/image4.png)
+    ![](../Lab%203/media/new6.png)
 
-    ![](./media/image6.png)
+1. On the **Basics** tab, configure the following settings:
 
-    ![](./media/image7.png)
+    - **Size**: Verify the selected size (**Standard_E4ds_v5 - 4 vCPUs, 32 GiB memory**) **(1)**
+    - **Username**: Enter **sqlvmuser (2)**
+    - **Password**: Enter **AZvmsql12345 (3)**
+    - **Confirm password**: Enter **AZvmsql12345 (4)**
+    - **Public inbound ports**: Select **Allow selected ports (5)**
+    - **Select inbound ports**: Choose **RDP (3389) (6)**
+    - Then, click **Next: Disk > (7)**.
 
-    ![](./media/image8.png)
+      ![](../Lab%203/media/new7.png)
 
-    ![](./media/image9.png)
+1. Keep the default disk settings and click **Next: Networking >**.
 
-5.  Keep default disk type values and click **Next: Networking**
+    ![](../Lab%203/media/new8.png)
 
-    ![](./media/image10.png)
+1. Keep the default networking settings, ensure **Allow selected ports** with **RDP (3389)** is selected, and then click **Next: Management**.
 
-6.  On Management page,
+    ![](../Lab%203/media/new9.png)
 
-    ![](./media/image11.png)
+1. On the **Management** tab, enable **System assigned managed identity (1)** and **Enable periodic assessment (2)**, then click **Next: Monitoring > (3)**.
 
-    ![](./media/image12.png)
+    ![](../Lab%203/media/new10.png)
 
-7.  Click on **SQL Server Settings** tab
+1. Keep the default monitoring settings and click **Next: Advanced >**.
 
-    ![](./media/image13.png)
+    ![](../Lab%203/media/new11.png)
 
-8.  On SQL server settings page, select below values and then click on **Review + create.**
+1. On the **SQL Server settings** tab, set **SQL connectivity** to **Public (Internet) (1)**, enable **SQL Authentication (2)**, and then click **Review + create (3)**.
 
-    **SQL connectivity**: Public (Internet)
-    
-    **SQL authentication:** Enable
+    ![](../Lab%203/media/new12.png)
 
-    ![](./media/image14.png)
+1. Review the configuration details, ensure validation is passed, and then click **Create** to deploy the virtual machine.
 
-9.  Once the validation is passed, click on **Create**.
+    ![](../Lab%203/media/new13.png)
 
-    ![](./media/image15.png)
+1. Once the deployment is complete, click **Go to resource** to access the created virtual machine.
 
-10. Wait for the deployment to complete.
+    ![](../Lab%203/media/new14.png)
 
-    ![](./media/image16.png)
+1. On the virtual machine **Overview** page, copy the **Public IP address** and paste in **Notepad** to use for connecting to the SSMS in the next steps.
 
-    ![](./media/image17.png)
+    ![](../Lab%203/media/new15.png)
 
-11. Make sure you copy the **Public IP Address** to connect from SSMS in
-    next task
+## Exercise 2: Setup SQL Server 2025 environment 
 
-    ![](./media/image18.png)
+>**Note:** You have SQL Server 2025 running and can connect with SSMS or
+VS Code.
 
-### Exercise 2: Setup SQL Server 2025 environment 
+1. In the LabVM search bar, type **SSMS (1)** and select **SQL Server Management Studio 22 (2)** to open the application.
 
-> Note: You have SQL Server 2025 running and can connect with SSMS or VS Code.
+    ![](../Lab%203/media/new38.png)
 
-1. From the LabVM, search for **SQL Server Management Studio 22** and open it.
+1. In the **Sign in to SQL Server Management Studio** window, click **Sign in with Microsoft** to continue.
 
-    ![](./media/image18b.png)
-    > Note: If you see a SignIn page, click on **Skip and add accounts later**
-    ![](./media/image18c.png)
+    ![](../Lab%203/media/new39.png)
 
+1. Select **Work or school account (1)** and click **Continue (2)** to sign in using your assigned credentials.
 
-1.  Connect using SSMS:
+    ![](../Lab%203/media/new40.png)
 
-    - Server: **< VM Public IP >,1433** (or local instance)
+1. In the **Connect** window, provide the following details to connect to the SQL Server:
 
-    - Auth: SQL Server Authentication
+    - **Server name**: Enter the **Public IP address with port 1433** that you copied in Exercise 1 **(1)**
+    - **Authentication**: Select **SQL Server Authentication (2)**
+    - **User name**: Enter **sqlvmuser (2)**
+    - **Password**: Enter the **AZvmsql12345 (3)**
+    - **Trust Server Certificate**: Check this option **(4)**
+    - Click **Connect (5)** to access the SQL Server.
 
-		- Username : **sqlvmuser**
-	
-		- Password: **AZvmsql12345**
+      ![](../Lab%203/media/new41.png)
 
-    - Check “Trust server certificate” (if needed)
+## Exercise 3: Create Azure OpenAI resource and deploy Embedding Model 
 
-    ![](./media/image19.png)
+1. In the Azure portal, type **Azure OpenAI (1)** in the top search bar and select **Azure OpenAI (2)** from the Services list.
 
-    ![](./media/image20.png)
+    ![](../Lab%203/media/latest3.png)
 
-### Exercise 3: Create Azure OpenAI resource and deploy Embedding Model 
+1. In the **Azure OpenAI** page, click **+ Create (1)** and select **Azure OpenAI (2)** from the dropdown to create a new Azure OpenAI resource, which will be used to deploy models and generate embeddings in the lab.
 
-1.  Switch back to Azure and search for **Azure OpenAI** and select it.
+    ![](../Lab%203/media/new16.png)
 
-    ![](./media/image21.png)
+1. On the **Basics** tab, provide the following details to create the Azure OpenAI resource for deploying models used in the lab:
 
-2.  Click on Create -> Azure OpenAI.
+    - **Subscription**: Select your Azure subscription **(1)**
 
-    ![](./media/image22.png)
+    - **Resource group**: Choose an existing resource group **AIDeveloper (2)**
 
-3.  Enter below values and click **Next**.
+    - **Region**: Select **East US (3)**
 
-    Subscription: **Default Subscription**
+    - **Name**: Enter **azsqlaoai-<inject key="Deployment ID" enableCopy="false"/> (4)**
 
-    Resource Group: **AIDeveloper**
+    - **Pricing tier**: Select **Standard S0 (5)**
 
-    Region: **East US 2**
+    - Click **Next (6)** to proceed.
 
-    Name: **azsqlaoai<inject key="DeploymentID" enableCopy="false"/>**
+      ![](../Lab%203/media/new17.png)
 
-    Pricing tier: **Standard S0**
+1. On the **Review + submit** tab, verify the provided details and click **Create** to deploy the Azure OpenAI resource.
 
-    ![](./media/image23.png)
+    ![](../Lab%203/media/new18.png)
 
-4.  Keep the default value and click Next.
+1. Once the deployment is complete, click **Go to resource** to open the Azure OpenAI resource.
 
-    ![](./media/image24.png)
+    ![](../Lab%203/media/new19.png)
 
-5.  Keep default tag and click Next.
+1. In the Azure OpenAI resource, navigate to **Keys and Endpoint (1)** from the left navigation pane, copy the **Key1 (2)** and **Endpoint (3)** values and paste them in **Notepad** to use in the next steps for authentication and integration.
 
-    ![](./media/image25.png)
+    ![](../Lab%203/media/new20.png)
 
-6.  Review the details and click Create.
+1. From the Azure OpenAI resource **Overview (1)** page, click **Go to Foundry portal (2)** to access model deployments and manage AI models required for the lab.
 
-    ![](./media/image26.png)
+    ![](../Lab%203/media/new21.png)
 
-7.  Wait for the deployment successful and click on **Go to resource.**
+1. In the Foundry portal, navigate to **Deployments (1)**, click **+ Deploy model (2)**, and select **Deploy base model (3)** to deploy a model for use in the lab.
 
-    ![](./media/image27.png)
+    ![](../Lab%203/media/new22.png)
 
-8.  Expand Resource management-\> keys and endpoints from left
-    navigation menu and copy the **endpoint and key value** in a notepad to use
-    in next tasks.
+1. In the **Select a model** window, search for **text-embedding-3-small (1)**, select it **(2)**, and click **Confirm (3)** to use it for generating embeddings in the lab.
 
-    ![](./media/image28.png)
+    ![](../Lab%203/media/new23.png)
 
-9.  Click on **Overview** and select **Go to Foundry portal**
+1. In the **Deploy text-embedding-3-small** window, click **Customize** to adjust limits.
 
-    ![](./media/image29.png)
+    ![](../Lab%203/media/new24.png)
 
-10. Click on Deployments under Shared resource from left navigation
-    menu. Select Deploy model-\> Deploy base model.
+1. In the **Deploy text-embedding-3-small** window, set the **Tokens per Minute Rate Limit** to **100K (1)**, keep the default settings, and click **Deploy (2)** to complete the model deployment.
 
-    ![](./media/image30.png)
+    ![](../Lab%203/media/new25.png)
 
-11. Search for **text-embedding**, select **text-embedding-3-small** model and
-    click Confirm.
+1. After the model deployment is complete, navigate to **Deployments**, open the deployed model, and copy the **Endpoint (Target URI)** and paste it in the **Notepad** to use in the next steps for integration.
 
-    ![](./media/image31.png)
-
-12. Select **Customize**.
-
-    ![](./media/image32.png)
-
-13. Set Tokens per Minute Rate limit to max and click **Deploy**.
-
-    ![](./media/image33.png)
-
-    ![](./media/image34.png)
+    ![](../Lab%203/media/new26.png)
 
 ### Exercise 4: Create Data base and tables
 
-1.  Switch back to **SSMS**. Right click on the **Databases** folder and select New database
+1. Switch back to **SSMS**. Right click on the **Databases** folder and select New database
     to Get patient case data into SQL Server.
 
     ![](./media/image35.png)
 
-2.  Enter the database name as **ContosoHospitalDB** and click OK.
+2. Enter the database name as **ContosoHospitalDB** and click OK.
 
     > Note: Another way to create the DB is by running the command: **CREATE DATABASE ContosoHospitalDB;**
 
@@ -247,57 +248,57 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 
     ![](./media/image38.png)
 
-2.  Right-click Database → Tasks → Import Flat File as shown in the
+1. Right-click Database → Tasks → Import Flat File as shown in the
     image below.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image60.png)
 
-3.  Click on **Next** on the Introduction page.
+1. Click on **Next** on the Introduction page.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image61.png)
 
-4.  **Browse** the file on the Specify Input file section.
+1. **Browse** the file on the Specify Input file section.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image62.png)
 
-5.  Select **PatientNotes.csv** file from C:\Labfiles folder.
+1. Select **PatientNotes.csv** file from C:\Labfiles folder.
 
     ![](./media/image63.png)
 
-6.  Click on **Next** to proceed.
+1. Click on **Next** to proceed.
 
     ![](./media/image64.png)
 
-7.  Preview the data and click on **Next**.
+1. Preview the data and click on **Next**.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image65.png)
 
-8.  Keep the columns as is and click on **Next**.
+1. Keep the columns as is and click on **Next**.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image66.png)
 
-9.  **Finish** the process.
+1. **Finish** the process.
 
     ![A screenshot of a computer Description automatically
     generated](./media/image67.png)
 
-10. Once the operation is completed, close the window.
+1. Once the operation is completed, close the window.
 
     ![](./media/image68.png)
 
-11. Expand the tables section under the database and notice that the
+1. Expand the tables section under the database and notice that the
     table is created.
 
     ![](./media/image69.png)
 
 ### Exercise 6: Create external embedding model
 
-1.  Run below query to Create master key (needed once per DB)
+1. Run below query to Create master key (needed once per DB)
     
     ```
     USE ContosoHospitalDB;
@@ -311,7 +312,7 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 
     ![](./media/image39.png)
 
-2.  Run below query to Create database scoped credential. The credential
+1. Run below query to Create database scoped credential. The credential
     name must match the URL you reference in the external model and place your **Azure OpenAI Endpoint Key** and **<YOUR_AZURE_OpenAI_KEY>**.
 
     ```
@@ -332,11 +333,11 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 
     ![](./media/image40.png)
 
-3.  Switch back to Foundry portal and copy the model endpoint value:
+1. Switch back to Foundry portal and copy the model endpoint value:
 
     ![](./media/image41.png)
 
-4.  Update below query with Azure OpenAI end point and Embeddigns model
+1. Update below query with Azure OpenAI end point and Embeddigns model
     location (Foundry portal) and run to create external model
 
     ```
@@ -364,7 +365,7 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 
 ### Exercise 7: Generate embeddings and store vectors
 
-1.  Run below command to create embeddings table (VECTOR column)
+1. Run below command to create embeddings table (VECTOR column)
 
     ```
     USE ContosoHospitalDB;
@@ -383,7 +384,7 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 
     ![](./media/image43.png)
 
-2.  Run below query to populate embeddings
+1. Run below query to populate embeddings
 
     ```
     USE ContosoHospitalDB;
@@ -400,7 +401,7 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 
     ![](./media/image44.png)
 
-3.  Run below query to validate embeddings:
+1. Run below query to validate embeddings:
     ```
      SELECT COUNT(*) AS TotalEmbeddings FROM dbo.PatientEmbeddings;`
     `SELECT * FROM dbo.PatientEmbeddings;
@@ -409,7 +410,7 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 
     ![](./media/image46.png)
 
-4.  Run below query to create vector index (DiskANN)
+1. Run below query to create vector index (DiskANN)
 
     ```
     USE ContosoHospitalDB;
@@ -428,7 +429,7 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 This exercise helps you search for patient cases that are **similar in
 meaning** to a doctor's query, using vector embeddings.
 
-1.  Run below query for exact semantic search (VECTOR_DISTANCE). No
+1. Run below query for exact semantic search (VECTOR_DISTANCE). No
     manual embedding, No REST API, No 1536‑value array and SQL Server
     does everything automatically
 
@@ -461,7 +462,7 @@ meaning** to a doctor's query, using vector embeddings.
 
     ![](./media/image48.png)
 
-2.  Run semantic search with clinical filters.this query filters
+1. Run semantic search with clinical filters.this query filters
     Department = Pulmonology and Age group = 60–74
 
     ```
@@ -495,7 +496,7 @@ meaning** to a doctor's query, using vector embeddings.
 
     ![](./media/image49.png)
 
-3.  Run below query to add clinical filter
+1. Run below query to add clinical filter
 
     ```
     USE ContosoHospitalDB;
@@ -530,7 +531,7 @@ meaning** to a doctor's query, using vector embeddings.
 
     ![](./media/image50.png)
 
-4.  I’ve kept your parameters and added in‑proc embedding generation.
+1. I’ve kept your parameters and added in‑proc embedding generation.
     This SP uses exact cosine; you can add an @useAnn BIT = 0 switch
     later if you want to go the ANN→re‑rank route.
 
@@ -572,7 +573,7 @@ meaning** to a doctor's query, using vector embeddings.
     ```
     ![](./media/image51.png)
 
-5.  Run below query to test:
+1. Run below query to test:
 
     ```
     -- test 1
@@ -591,7 +592,7 @@ meaning** to a doctor's query, using vector embeddings.
 
 ### Exercise 9: Compare keyword vs semantic search
 
-1.  Run below queries and the count should match
+1. Run below queries and the count should match
 
     ```
     SELECT COUNT(*) FROM dbo.PatientNotes;
@@ -600,7 +601,7 @@ meaning** to a doctor's query, using vector embeddings.
 
     ![](./media/image53.png)
 
-2.  Run below query to test embedding generation:
+1. Run below query to test embedding generation:
 
     ```
     SELECT AI_GENERATE_EMBEDDINGS(N'test case' USE MODEL ClinicalEmbeddingModel);
@@ -608,7 +609,7 @@ meaning** to a doctor's query, using vector embeddings.
 
     ![](./media/image54.png)
 
-3.  Run below query -Find similar cases for fever + painful urination
+1. Run below query -Find similar cases for fever + painful urination
     and filter to Infectious Disease
 
     ```
@@ -619,7 +620,7 @@ meaning** to a doctor's query, using vector embeddings.
     ```
     ![](./media/image55.png)
 
-4.  Run below query with and without department filter. Observe:Mix of
+1. Run below query with and without department filter. Observe:Mix of
     departments,Cardiology,Emergency,Internal Medicine.
 
     ```
@@ -630,7 +631,7 @@ meaning** to a doctor's query, using vector embeddings.
 
     ![](./media/image56.png)
 
-6.  Run below query With Filter (Cardiology Only). Observe: Only cardiology cases ,Possibly fewer results,Ranking slightly changes
+1. Run below query With Filter (Cardiology Only). Observe: Only cardiology cases ,Possibly fewer results,Ranking slightly changes
 
     ```
     EXEC dbo.FindSimilarPatientCases
@@ -641,7 +642,7 @@ meaning** to a doctor's query, using vector embeddings.
 
     ![](./media/image57.png)
 
-7.  Run below query with Hybrid search pattern
+1. Run below query with Hybrid search pattern
 
     ```
     EXEC dbo.FindSimilarPatientCases

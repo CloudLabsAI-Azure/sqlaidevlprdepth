@@ -262,7 +262,7 @@ Generate queries using natural language and improve productivity.
 
     ```
     SELECT ProductID, ProductName, StockQuantity
-    FROM Products
+    FROM core.Products
     WHERE ProductID = 1;
     ```
 
@@ -278,7 +278,7 @@ Generate queries using natural language and improve productivity.
 1. Execute the stored procedure with the below given query.
 
     ```
-    EXEC RestockProduct 
+    EXEC core.RestockProduct
     @ProductID = 1,
     @QuantityToAdd = 10;
     ```
@@ -450,7 +450,7 @@ Goal - Apply role-based access and masking
     (InventoryUser)
 
     ```
-    EXECUTE AS USER = InventoryUser;
+    EXECUTE AS USER = 'InventoryUser';
     SELECT ProductName, Price 
     FROM core.Products;
     REVERT;
@@ -474,7 +474,7 @@ Goal - Apply role-based access and masking
     concept.
 
     ```
-    EXECUTE AS USER = InventoryUser;
+    EXECUTE AS USER = 'InventoryUser';
     SELECT ProductName, Price 
     FROM core.Products;
     REVERT;
