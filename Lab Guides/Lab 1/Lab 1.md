@@ -120,7 +120,7 @@ In this lab, participants work with a realistic healthcare scenario at Contoso M
 
     ![](./media/image18b.png)
     > Note: If you see a SignIn page, click on **Skip and add accounts later**
-        ![](./media/image18c.png)
+    ![](./media/image18c.png)
 
 
 1.  Connect using SSMS:

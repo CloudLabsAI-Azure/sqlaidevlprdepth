@@ -149,18 +149,23 @@ By completing this lab, you will be able to:
 5. Select the Copilot icon in the top right, Prompt Copilot to create a database:
 
     ```
-	@workspace, generate a SQL Server script to create a database named ContosoMedicalResearch only if it does not already exist. Use IF NOT EXISTS with sys.databases and wrap the CREATE DATABASE statement inside a BEGIN...END block. Keep default settings. 
+	@workspace In the ContosoMedicalResearch database, write a T-SQL query to create a table named LibraryData with the following columns:
+    - BookID INT PRIMARY KEY
+    - Title NVARCHAR(200) NOT NULL
+    - Author NVARCHAR(100)
+    - Genre NVARCHAR(100)
+    - PublishedYear INT
+    - Summary NVARCHAR(MAX)
+    Make the query executable and include IF NOT EXISTS check.
     ```
+
+    > **Note:** It may not generate an executable query. You can copy the generated query and run in the query editor. This is completely optional. You can proceed with the next step.
 
     > **Note:** Write any prompt and send it, it will ask you to sign in first. Use your personal or work GitHub credentials to login to use GitHub Copilot features.
  
     ![](./media/image28.png)
 
     ![](./media/image29.png)
-
-    ![](./media/image30a.png)
-
-    ![](./media/image30.png)
 
 9. Right-click **DB → Tasks → Import Flat File** as shown in the image below.
 
