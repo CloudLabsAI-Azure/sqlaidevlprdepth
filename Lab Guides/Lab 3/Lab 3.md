@@ -406,7 +406,7 @@ By the end of this lab, participants will be able to:
     CREATE EXTERNAL DATA SOURCE ClinicalReportsBlob
     WITH (
         TYPE = BLOB_STORAGE,
-        LOCATION = 'https://sa@lab.labInstance.ID.blob.core.windows.net/public',
+        LOCATION = 'https://storage<inject key="Deployment ID" enableCopy="false"/>.blob.core.windows.net/public',
         CREDENTIAL = ClinicalReportsBlobCred
     );
     GO
