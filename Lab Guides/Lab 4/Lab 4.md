@@ -292,6 +292,8 @@ Generate queries using natural language and improve productivity.
       ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image30.png)
 
+      >**Note:** Output may vary depending on the stored procedure created and it might show commands completed successfully output. Proceed with the next step to see the updated stock quantity.
+
 1. You can verify the updated stock again.
 
     ```
@@ -601,6 +603,17 @@ Allow external applications to access database.
     ![A screenshot of a computer program Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image61.png)
 
+1. Now, it’s time to test GraphQL. Navigate to VS Code. Find the
+    graphql mode as **production**. You need to update it as
+    **development**. When DAB runs in **production mode**, it disables
+    the GraphQL UI (Playground).
+
+    ![A screenshot of a computer program Description automatically
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image65.png)
+
+    ![A screenshot of a computer program Description automatically
+    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image66.png)    
+
 1. Make sure your dab-config.json file looks like this:
 
     ```
@@ -636,7 +649,7 @@ Allow external applications to access database.
         "authentication": {
             "provider": "StaticWebApps"
         },
-        "mode": "production"
+        "mode": "development"
         }
     },
     "entities": {
@@ -679,36 +692,6 @@ Allow external applications to access database.
 
     ![A screen shot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image64.png)
-
-1. Now, it’s time to test GraphQL. Navigate to VS Code. Find the
-    graphql mode as **production**. You need to update it as
-    **development**. When DAB runs in **production mode**, it disables
-    the GraphQL UI (Playground).
-
-    ![A screenshot of a computer program Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image65.png)
-
-    ![A screenshot of a computer program Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image66.png)
-
-1. Expand the terminal if it is collapsed and press **Ctrl + C** to
-    shutdown the dab that you have started using dab start command.
-
-    Once you press Ctrl+C, you will see that application is shutting down.
-
-    ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image67.png)
-
-1. Again, start the Data Api Builder:
-
-    ```
-    dab start
-    ```
-
-    ![A screenshot of a computer program Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image68.png)
-
-    ![A screen shot of a computer program Description automatically
-    generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%204/media/image69.png)
 
 1. Navigate to your browser and enter the graphql url:
 
