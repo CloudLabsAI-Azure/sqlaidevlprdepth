@@ -362,14 +362,14 @@ By the end of this lab, participants will be able to:
 
 7. Run below query to create External Model.
 
-    >**Note**: Replace Location with text-embedding URL from Microsoft Foundry
-    Portal and Credential value with OpenAI Endpoint that you copied and pasted in the Notepad in Exercise 2.
+    >**Note**: Replace `<Replace with text-embedding Target URI>` with text-embedding URL from Microsoft Foundry
+    Portal and Credential value with OpenAI Endpoint that you copied and pasted in the Notepad in **Exercise 2**.
 
     ```
     CREATE EXTERNAL MODEL ClinicalEmbeddingModel 
     WITH ( 
         -- Full embeddings endpoint URL: host + deployment + path + api-version 
-        LOCATION   = 'https://azsqlaoai0216.openai.azure.com/openai/deployments/embeddings/embeddings?api-version=2024-02-15-preview', 
+        LOCATION   = '<Replace with text-embedding Target URI>', 
         API_FORMAT = 'Azure OpenAI', 
         MODEL_TYPE = EMBEDDINGS, 
         MODEL      = 'text-embedding-3-small', 
