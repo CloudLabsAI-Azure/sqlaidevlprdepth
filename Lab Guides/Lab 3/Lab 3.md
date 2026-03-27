@@ -671,7 +671,7 @@ speed up coding.
     Table: dbo.ClinicalReports
     Columns:
     - ReportID INT PRIMARY KEY
-    - PatientID INT
+    - PatientMRN INT
     - ReportText NVARCHAR(MAX) 
     
     Table: dbo.ReportEmbeddings
@@ -692,7 +692,7 @@ speed up coding.
     4. Join dbo.ReportEmbeddings with dbo.ClinicalReports using ReportID
     5. Return TOP 5 most similar results with: 
        - ReportID 
-       - PatientID 
+       - PatientMRN 
        - ReportText (or preview using LEFT) 
        - SimilarityScore = (1 - cosine distance)
     6. Order results by similarity (highest first)
