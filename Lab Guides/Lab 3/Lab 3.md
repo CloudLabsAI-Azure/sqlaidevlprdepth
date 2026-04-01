@@ -39,9 +39,9 @@ By the end of this lab, participants will be able to:
    
       ![Image](../Lab%201/media/95.png)
      
-1. Now enter the following Temparory Access Pass and click on **Sign in (2)**.
+1. Now enter the following Temporary Access Pass and click on **Sign in (2)**.
    
-   - **Temporaray Access Pass**: <inject key="AzureAdUserPassword"></inject> **(1)**
+   - **Temporary Access Pass**: <inject key="AzureAdUserPassword"></inject> **(1)**
 
       ![Image](../Lab%201/media/96.png)
      
@@ -125,7 +125,7 @@ By the end of this lab, participants will be able to:
 
     ![](./media/new14.png)
 
-1. On the virtual machine **Overview** page, copy the **Public IP address** and paste in **Notepad** to use for connecting to the SSMS in the next steps.
+1. On the virtual machine **Overview** page, copy the **Public IP address** and paste it into **Notepad** to use for connecting to the SSMS in the next steps.
 
     ![](./media/new15.png)
 
@@ -250,7 +250,7 @@ By the end of this lab, participants will be able to:
 
     ![](./media/new37.png)
 
-## Exercise 4: Connect SQL server 2025 via SSMS 
+## Exercise 4: Connect SQL Server 2025 via SSMS 
 
 1. In the LabVM search bar, type **SSMS (1)** and select **SQL Server Management Studio 22 (2)** to open the application.
 
@@ -264,15 +264,15 @@ By the end of this lab, participants will be able to:
 
     ![](./media/new40.png)
 
-1. On **Sign in** page, enter the following email/username, and click on **Next (2)**. 
+1. On the **Sign in** page, enter the following email/username, and click on **Next (2)**. 
 
    * **Email/Username**: <inject key="AzureAdUserEmail"></inject> **(1)**
    
       ![Image](../Lab%201/media/95.png)
      
-1. Now, enter the following Temparory Access Pass and click on **Sign in (2)**.
+1. Now, enter the following Temporary Access Pass and click on **Sign in (2)**.
    
-   * **Temporaray Access Pass**: <inject key="AzureAdUserPassword"></inject> **(1)**
+   * **Temporary Access Pass**: <inject key="AzureAdUserPassword"></inject> **(1)**
 
       ![Image](../Lab%201/media/96.png)   
 
@@ -315,7 +315,7 @@ By the end of this lab, participants will be able to:
 
     >**Note:** For each query below, please select **New Query** in the tool bar.
 
-2. Run below query to enable outbound REST.
+2. Run the below query to enable outbound REST.
 
     ```
     USE master;
@@ -328,7 +328,7 @@ By the end of this lab, participants will be able to:
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%203/media/image52.png)
 
-3. Run below query to **enable preview features in database.** This enables VECTOR type , VECTOR INDEX , AI_GENERATE_EMBEDDINGS and VECTOR_SEARCH .
+3. Run below query to **enable preview features in database.** This enables VECTOR type, VECTOR INDEX, AI_GENERATE_EMBEDDINGS, and VECTOR_SEARCH.
 
     ```
     USE ContosoClinicalReports;
@@ -340,7 +340,7 @@ By the end of this lab, participants will be able to:
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%203/media/image53.png)
 
-4. Run below query to create ClinicalReports table
+4. Run below query to create the ClinicalReports table
 
     ```
     CREATE TABLE dbo.ClinicalReports
@@ -360,7 +360,7 @@ By the end of this lab, participants will be able to:
 
 5. Run below query to **Create Master Key.**
 
-    >**Note:** If you have used different password then replace the password in the query below.
+    >**Note:** If you have used a different password, then replace the password in the query below.
 
     ```
     USE ContosoClinicalReports;
@@ -374,10 +374,10 @@ By the end of this lab, participants will be able to:
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%203/media/image55.png)
 
-6. Run below query to create Database Scoped Credential.
+6. Run below query to create a Database Scoped Credential.
 
     >**Note**: Replace CREDENTIAL value with OpenAI Endpoint and SECRET value
-    OpenAI Key that you copied and pasted in the Notepad in Exercise 2.
+    OpenAI Key that you copied and pasted into Notepad in Exercise 2.
 
     ```
     CREATE DATABASE SCOPED CREDENTIAL [Paste OpenAI Endpoint] 
@@ -390,10 +390,10 @@ By the end of this lab, participants will be able to:
     ![A screenshot of a computer Description automatically
     generated](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%203/media/image56.png)
 
-7. Run below query to create External Model.
+7. Run below query to create the External Model.
 
     >**Note**: Replace Location with text-embedding URL from Microsoft Foundry
-    Portal and Credential value with OpenAI Endpoint that you copied and pasted in the Notepad in Exercise 2.
+    Portal and Credential value with OpenAI Endpoint that you copied and pasted into Notepad in Exercise 2.
 
     ```
     CREATE EXTERNAL MODEL ClinicalEmbeddingModel 
@@ -412,9 +412,9 @@ By the end of this lab, participants will be able to:
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%203/media/image58.png)
 
-8. Run below query to create Credential for Blob Storage.
+8. Run below query to create a credential for Blob Storage.
 
-	>**Note**: Replace the SECRET value with Storage account SAS token that you copied and pasted in Notepad in Exercise 3.
+	>**Note**: Replace the SECRET value with the Storage account SAS token that you copied and pasted in Notepad in Exercise 3.
 
     ```
     -- Create a credential for Blob storage
@@ -521,9 +521,9 @@ By the end of this lab, participants will be able to:
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%203/media/image65.png)
 
-    >**Note**: As the number of rows are too much, session can be interrupted
+    >**Note**: As the number of rows is too much, the session can be interrupted
     sometimes. In this case, you can load the embeddings in two batches.
-    First load 100 rows and then again 100 rows with the help of below
+    First load 100 rows and then again 100 rows with the help of the below
     query: (Run the below query twice to load 200 records)
 
     ```
@@ -546,7 +546,7 @@ By the end of this lab, participants will be able to:
 
 ## Exercise 8: Create Vector Index (DiskANN) and Exact vs ANN Search
 
-1. Run below query to create vector index
+1. Run below query to create a vector index
 
     ```
     CREATE VECTOR INDEX IX_ReportEmbeddings
@@ -557,7 +557,7 @@ By the end of this lab, participants will be able to:
 
     ![](https://raw.githubusercontent.com/technofocus-pte/sqlaidevlprdepth/refs/heads/main/Lab%20Guides/Lab%203/media/image67.png)
 
-2. Run below query for exact search
+2. Run below query for an exact search
 
     ```
     DECLARE @query NVARCHAR(MAX) =
@@ -678,7 +678,7 @@ speed up coding.
 
     ![](./media/new-11.png)
 
-    >**Note:** Use your personal GitHub credentials to sign in the GitHub Copilot.
+    >**Note:** Use your personal GitHub credentials to sign in to GitHub Copilot.
 
 2. New query window → open Copilot chat pane or type /copilot
 
@@ -733,11 +733,11 @@ speed up coding.
 
     ![](./media/latest1.png)
 
-5. Once Query is add click **Execute** to run the query.
+5. Once the query is added, click **Execute** to run the query.
 
     ![](./media/latest2.png)
 
 
 ## Conclusion:
 
-By completing this lab, participants have successfully provisioned infrastructure, enabled SQL Server 2025 AI features, generated vector embeddings using Azure OpenAI, implemented semantic search with DiskANN indexing, and secured sensitive patient data using masking and role-based access control. They also exposed the search functionality as a secure REST API for hospital applications. Overall, learners gained practical experience in building an end-to-end AI-powered, privacy-compliant clinical search system that combines database intelligence, cloud AI services, and secure API development into one integrated solution.
+By completing this lab, participants have successfully provisioned infrastructure, enabled SQL Server 2025 AI features, generated vector embeddings using Azure OpenAI, implemented semantic search with DiskANN indexing, and secured sensitive patient data using masking and role-based access control. They also exposed the search functionality as a secure REST API for hospital applications. Overall, learners gained practical experience building an end-to-end AI-powered, privacy-compliant clinical search system that integrates database intelligence, cloud AI services, and secure API development into a single solution.
